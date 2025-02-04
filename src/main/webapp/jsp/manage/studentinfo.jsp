@@ -1,0 +1,159 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안면인식 기반 자동출결 시스템</title>
+    <style>
+        .container {
+			background-color: white;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 1500px;
+            height: 700px;
+            margin-left: 190px;
+            margin-top: 150px;
+            position: relative;
+            padding-top: 50px;
+		    }
+        table{ 
+            width:850px;
+            position: absolute;
+            top: 0px;
+            right: 170px;
+            text-align:center;
+            border-collapse: collapse;
+        }
+        tr{ 
+            height: 30px;
+            border: 1px solid darkgray;
+            border-left: none;
+            border-right: none;
+        }
+        th{ 
+            background-color: #379fc5e7;
+            border-right: 1px solid darkgray; 
+            border-bottom: 1px solid darkgray;
+            font-size: 20px;
+        }
+        td{ 
+            border-bottom: 1px solid darkgray;
+            border-right: 1px solid darkgray;
+            height: 35px;
+        }
+        a{
+            color: black
+            ; text-decoration: none; 
+            vertical-align: middle;
+        }
+        ul{
+            width:160px;
+            height: 40px;
+            font-weight: bold;
+            background-color:#fcfcfc;
+            margin:0px; 
+            padding:0px; text-align:center; 
+            font-size:20px;
+            border: 1px solid darkgray;
+            border-top: none;
+           /* border-left:1px solid darkgray;
+            border-right:1px solid darkgray; 
+            border-bottom: 1px solid darkgray; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="managermenu" style="width:160px;  margin-left:220px; padding-top: 37px;">
+            <div style="background-color: #379fc5e7; width:160px; text-align:center; font-size:20px; color:#fcfcfc; border:1px solid darkgray; font-weight:bold; padding:5px 0px;">관리자<br>
+                <a href="managerlogin.html" style="color: #fcfcfc;">(로그아웃)</a></div>
+            <ul><a href="studentmanage.html" class="menu">· 학생관리</a></ul>
+            <ul><a href="approve.html" class="menu">· 승인대기</a></ul>
+            <ul style="border-bottom:1px solid darkgray;"><a href="attendance.html" class="menu">· 출결관리</a></ul>
+        </div>
+        <table>
+            <tr style="border: none;">
+                <td colspan="6" style="text-align: left; font-size: 20px; font-weight: bold; background-color: white; border-right:none;">- 학생정보</td>
+                
+            </tr>
+            <tr>
+                <th style="text-align: center; font-size: 17px;" >이름</th>
+                <td style="text-align: center;">홍길동</td>
+            </tr>
+            <tr>
+                <th style="text-align: center; font-size: 17px;">강좌</th>
+                <td style="text-align: center;">빅데이터</td>
+            </tr>
+            <tr>
+                <th style="text-align: center; font-size: 17px;">전화번호</th>
+                <td style="text-align: center;">010-1111-2222</td>
+            </tr>
+            <tr>
+                <th style="text-align: center; font-size: 17px;">생년월일</th>
+                <td style="text-align: center;">1990.01.17</td>
+            </tr>
+            <tr  style="border-bottom: none; ">
+                <td colspan="2" style="border-bottom: none; border-right: none; text-align:right;"><button style="width:60px; height:30px; background-color: #1895be; border:none; font-size:15px; border-radius: 5px; cursor:pointer; color:white;" onclick="window.location.href='modify.html'">수정</button></td>
+            </tr>
+        </table>
+        <table style="top: 225px;">
+            <tr style="border: none;">
+                <td colspan="6" style="text-align: left; font-size: 20px; font-weight: bold; border: none;">- 출결현황</td>
+            </tr>
+            <tr>
+                <th style="height: 45px;">번호</th>
+                <th style="height: 45px;">날짜</th>
+                <th style="height: 45px;">수강강좌</th>
+                <th style="height: 45px;">출결</th>
+                <th style="height: 45px;">입실</th>
+                <th style="height: 45px; border-right: none;">퇴실</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2025.01.20</td>
+                <td>빅데이터</td>
+                <td>출석</td>
+                <td>9:00</td>
+                <td style="border-right: none;">18:00</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2025.01.20</td>
+                <td>빅데이터</td>
+                <td>출석</td>
+                <td>9:00</td>
+                <td style="border-right: none;">18:00</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2025.01.20</td>
+                <td>빅데이터</td>
+                <td>출석</td>
+                <td>9:00</td>
+                <td style="border-right: none;">18:00</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2025.01.20</td>
+                <td>빅데이터</td>
+                <td>출석</td>
+                <td>9:00</td>
+                <td style="border-right: none;">18:00</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2025.01.20</td>
+                <td>빅데이터</td>
+                <td>출석</td>
+                <td>9:00</td>
+                <td style="border-right: none;">18:00</td>
+            </tr>
+        </table>
+        <div style="width:850px; height:200px; position: absolute; bottom: 20px; right: 170px; background-color:#379fc5e7; text-align:center;">
+            출결현황 막대그래프 사진 넣는 곳 
+        </div>
+    </div>
+</body>
+</html>
