@@ -82,13 +82,16 @@
 					<td><input type="text" id= "userbirth" name="userbirth" style="width:200px;"></td>
 				</tr>
 				<tr>
-                    <td colspan="2" style="padding:80px 0px; padding-right: 1px; border-bottom:none; text-align:center; ">
+                    <td colspan="2" style="padding:65px 0px; padding-right: 1px; border-bottom:none; text-align:center; ">
                         <button type="button" class="button" onclick="joinok();" style="color:white; text-decoration:none;">가입완료</button>
                         <button type="button" id="joinCancel" onclick="DoCancel()" style="color:white; text-decoration:none;">가입취소</button>
                     </td>
                 </tr>
 			</table>
 		</form>
+		<div style="width: 150px; border-right: none; padding-left: 181px;">
+            <img src="logo.png" style="width: 120px;">
+        </div>
 		</section>
 		<script>
 			function joinok() {

@@ -44,8 +44,8 @@
             height: 35px;
         }
         a{
-            color: black
-            ; text-decoration: none; 
+            color: black; 
+            text-decoration: none; 
             vertical-align: middle;
         }
         ul{
@@ -66,6 +66,9 @@
 </head>
 <body>
     <div class="container">
+        <div style="width: 150px; border-right: none; padding-left: 10px;">
+            <img src="logo.png" style="width: 150px;">
+        </div>
         <div class="managermenu" style="width:160px;  margin-left:220px; padding-top: 37px;">
             <div style="background-color: #379fc5e7; width:160px; text-align:center; font-size:20px; color:#fcfcfc; border:1px solid darkgray; font-weight:bold; padding:5px 0px;">관리자<br>
                 <a href="managerlogin.html" style="color: #fcfcfc;">(로그아웃)</a></div>
@@ -95,7 +98,7 @@
                 <td style="text-align: center;">1990.01.17</td>
             </tr>
             <tr  style="border-bottom: none; ">
-                <td colspan="2" style="border-bottom: none; border-right: none; text-align:right;"><button style="width:60px; height:30px; background-color: #1895be; border:none; font-size:15px; border-radius: 5px; cursor:pointer; color:white;" onclick="window.location.href='modify.html'">수정</button></td>
+                <td colspan="2" style="border-bottom: none; border-right: none; text-align:right;"><button style="width:60px; height:30px; background-color: #1895be; border:none; font-size:15px; border-radius: 5px; cursor:pointer; color:white; font-weight:bold;" onclick="window.location.href='modify.html'">수정</button></td>
             </tr>
         </table>
         <table style="top: 225px;">

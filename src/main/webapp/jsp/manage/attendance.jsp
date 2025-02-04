@@ -21,7 +21,7 @@
             table{ 
                 width:850px;
                 position: absolute;
-                top: 34px;
+                top: 100px;
                 right: 200px;
                 text-align:center;
                 border-collapse: collapse;
@@ -29,7 +29,7 @@
             tr{ height: 32px; background-color:  #fcfcfc;}
             th{ background-color: #379fc5e7; 
                 height: 33px; 
-                font-size: 20px;
+                font-size: 16px;
                 border-bottom: 1px solid darkgray;
                 border-right: 1px solid darkgray;
             }
@@ -37,6 +37,9 @@
                 height: 35px;
                 border-bottom: 1px solid darkgray;
                 border-right: 1px solid darkgray; 
+            }
+            tr:hover{
+                background-color: lightgray;
             }
             .hovercell:hover{
                 background-color: white;
@@ -68,7 +71,10 @@
     </head>
     <body>
         <div class="container">
-            <div class="managermenu" style="width:160px; border-right:none;  margin-left:220px; padding-top: 37px;">
+            <div style="width: 150px; border-right: none; padding-left: 10px;">
+                <img src="logo.png" style="width: 150px;">
+            </div>
+            <div class="managermenu" style="width:160px; border-right:none;  margin-left:220px; padding-top: 39px;">
                 <div style="background-color: #379fc5e7; width:160px; text-align:center; font-size:20px; color:#fcfcfc; border:1px solid darkgray; font-weight:bold; padding:5px 0px;">관리자<br>
                     <a href="managerlogin.html" style="color: #fcfcfc;">(로그아웃)</a></div>
                 <ul><a href="studentmanage.html" class="menu">· 학생관리</a></ul>
