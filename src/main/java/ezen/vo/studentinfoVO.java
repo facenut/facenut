@@ -10,6 +10,8 @@ public class studentinfoVO {
 	private String classno;		//강좌번호
 	private String birthday;	//생년월일
 	private String phone;		//전화번호
+	private String status;		//승인여부
+	
 	
 	//setter
 	public void setSno 		(String sno) 	  {	this.sno = sno;				}
@@ -17,6 +19,7 @@ public class studentinfoVO {
 	public void setClassno 	(String classno)  {	this.classno = classno;		}
 	public void setBirthday (String birthday) {	this.birthday = birthday;	}
 	public void setPhone 	(String phone) 	  {	this.phone = phone;		 	}
+	public void setStatus 	(String status)   {	this.status = status;		 	}
 	
 	//getter
 	public String getSno() 		{	return sno;		}
@@ -24,4 +27,5 @@ public class studentinfoVO {
 	public String getClassno() 	{	return classno;	}
 	public String getBirthday() {	return birthday;}
 	public String getPhone() 	{	return phone;	}
+	public String getStatus() 	{	return status;	}
 }

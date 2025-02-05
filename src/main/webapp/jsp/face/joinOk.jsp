@@ -6,31 +6,32 @@
 //한글 인코딩 처리
 request.setCharacterEncoding("utf-8");
 
-String username = request.getParameter("username");
-String userphone = request.getParameter("userphone");
-String classname = request.getParameter("classname");
-String userbirth = request.getParameter("userbirth");
+String sname  = request.getParameter("username");
+String phone = request.getParameter("userphone");
+String classno = request.getParameter("classname");
+String birthday = request.getParameter("userbirth");
 
 studentinfoVO vo = new studentinfoVO();
-vo.setSname(username);
-vo.setPhone(userphone);
-vo.setClassno(classname);
-vo.setBirthday(userbirth);
+vo.setSname(sname);
+vo.setPhone(phone);
+vo.setClassno(classno);
+vo.setBirthday(birthday);
 
 studentDTO dto = new studentDTO();
+
 if( dto.join(vo) == true )
 {
 	// 가입 성공시
 	%>
 	<script>
-		alert('회원으로 가입되셨습니다.'); location.href='facerecog.html';
+		alert('회원으로 가입되셨습니다.'); location.href='facerecog.jsp';
 	</script>
 	<%
 } else {
 	// 가입 실패시
 	%>
 	<script>
-		alert('오류가 발생하였습니다. 다시 시도해주세요.'); location.href='facerecog.html';
+		alert('오류가 발생하였습니다. 다시 시도해주세요.'); location.href='facerecog.jsp';
 	</script>
 	<%
 }

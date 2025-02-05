@@ -57,12 +57,19 @@
             }
             input:focus{ outline:none; }   
 		</style>
-		<script src="./js/jquery-3.7.1.js"></script>
+		<script src="../../js/jquery-3.7.1.js"></script>
 		<script>
 		$(document).ready(function() {
 		    $("#joinOk").click(function() {
 		        Dosubmit();
 		    });
+		    
+		    $("#joinCancel").click(function() {
+				if(confirm("회원 가입을 취소하시겠습니까?") == true)
+				{
+					document.location = "../../html/face/facerecog.html";
+				}
+			});
 		});
 
 		function Dosubmit() {
@@ -71,42 +78,29 @@
 		        $("#username").focus();
 		        return;
 		    }
-		}
-				/* function DoSubmit() {
-					if( $("#username").val() == "" )
-					{
-						alert("이름을 입력하세요.");
-						$("#username").focus();
-						return;
-					}
-					if( $("#userphone").val() == "" )
-					{
-						alert("전화번호를 입력하세요.");
-						$("#userphone").focus();
-						return;
-					}
-					if( $("#userbirth").val() == "" )
-					{
-						alert("생년월일을 입력하세요.");
-						$("#userbirth").focus();
-						return;
-					} */
-					/* if(confirm("회원가입을 완료하시겠습니까?")  == true)
-					{
-						document.forms.user.submit();
-					}	
-				} */
-				
-				/* function DoCancel() {
-					location.href="facerecog.html";
-				}
-			}); */
+		    if( $("#userphone").val() == "" )
+			{
+				alert("전화번호를 입력하세요.");
+				$("#userphone").focus();
+				return;
+			}
+		    if( $("#userbirth").val() == "" )
+			{
+				alert("생년월일을 입력하세요.");
+				$("#userbirth").focus();
+				return;
+			}
+		    if(confirm("회원가입을 완료하시겠습니까?")  == true)
+			{
+				document.forms.student.submit();
+			}	
+		};
 		</script>
 		<section>
         <div class="container">
             <h1></h1>
 		<div class="join">회원가입</div>
-		<form action="joinOk.jsp" name="student" method="post">
+		<form action="joinOk.jsp" name="student" method="get">
 			<table style="width:500px; padding: 50px 50px 0px 50px; margin:0px auto; background-color:white; text-align:center;">
 				<tr>
 					<th>이름 :</th>
@@ -128,18 +122,18 @@
 				</tr>
 				<tr>
 					<th>생년월일 :</th>
-					<td><input type="text" id= "userbirth" name="userbirth" style="width:200px;"></td>
+					<td><input type="text" id= "userbirth" name="userbirth" style="width:200px; maxlength:'8';" placeholder="YYYYMMDD"></td>
 				</tr>
 				<tr>
                     <td colspan="2" style="padding:65px 0px; padding-right: 1px; border-bottom:none; text-align:center; ">
                         <button type="button" id="joinOk" style="color:white; text-decoration:none;">가입완료</button>
-                        <button type="button" id="joinCancel" onclick="DoCancel()" style="color:white; text-decoration:none;">가입취소</button>
+                        <button type="button" id="joinCancel" style="color:white; text-decoration:none;">가입취소</button>
                     </td>
                 </tr>
 			</table>
 		</form>
 		<div style="width: 150px; border-right: none; padding-left: 181px;">
-            <img src="../img/logo.png" style="width: 120px;">
+            <img src="../../img/logo.png" style="width: 120px;">
         </div>
 		</section>
 	</body>

@@ -42,9 +42,12 @@ public class DBManager {
 	
 	//데이터베이스연결
 	public void dbConnect() {
-		String url = "jdbc:mysql://192.168.0.87:3306/facenut";
-		String id  = "bteam";
-		String pw  = "1234";
+		//String url = "jdbc:mysql://192.168.0.87:3306/facenut";
+		//String id  = "bteam";
+		//String pw  = "1234";
+		String url = "jdbc:mysql://localhost:3306/facenutdb";
+		String id = "root";
+		String pw = "ezen";
 		try {
 			conn = DriverManager.getConnection(url, id, pw);
 		} catch (SQLException e) {
@@ -69,6 +72,7 @@ public class DBManager {
 	public int executeUpdate(String sql) {
 		//conn이 필요
 		try {
+			System.out.println(sql);
 			stmt = conn.createStatement();
 			return stmt.executeUpdate(sql);
 		} catch (SQLException e) {
@@ -80,6 +84,7 @@ public class DBManager {
 	public int executeReturn(String sql) {
 		//conn이 필요
 		try {
+			System.out.println(sql);
 			stmt = conn.createStatement();
 			stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 			ResultSet rs2 = stmt.getGeneratedKeys();

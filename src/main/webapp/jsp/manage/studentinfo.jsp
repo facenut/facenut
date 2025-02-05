@@ -1,5 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="ezen.dao.*" %>
+<%@ page import="ezen.dto.*" %>
+<%@ page import="ezen.vo.*" %>
+<%
+//한글 인코딩 처리
+request.setCharacterEncoding("utf-8");
+
+String sno = request.getParameter("sno");
+String sname  = request.getParameter("username");
+String phone = request.getParameter("userphone");
+String classno = request.getParameter("classname");
+String birthday = request.getParameter("userbirth");
+
+studentDTO dto = new studentDTO();
+studentinfoVO vo = dto.read(sno);
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -83,22 +99,22 @@
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;" >이름</th>
-                <td style="text-align: center;">홍길동</td>
+                <td style="text-align: center;"><% vo.getSname() %></td>
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;">강좌</th>
-                <td style="text-align: center;">빅데이터</td>
+                <td style="text-align: center;"><% vo.getClassno() %></td>
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;">전화번호</th>
-                <td style="text-align: center;">010-1111-2222</td>
+                <td style="text-align: center;"><% vo.getPhone() %></td>
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;">생년월일</th>
-                <td style="text-align: center;">1990.01.17</td>
+                <td style="text-align: center;"><% vo.getBirthday() %></td>
             </tr>
             <tr  style="border-bottom: none; ">
-                <td colspan="2" style="border-bottom: none; border-right: none; text-align:right;"><button style="width:60px; height:30px; background-color: #1895be; border:none; font-size:15px; border-radius: 5px; cursor:pointer; color:white; font-weight:bold;" onclick="window.location.href='modify.html'">수정</button></td>
+                <td colspan="2" style="border-bottom: none; border-right: none; text-align:right;"><button style="width:60px; height:30px; background-color: #1895be; border:none; font-size:15px; border-radius: 5px; cursor:pointer; color:white; font-weight:bold;" onclick="window.location.href='modify.jsp?sno=<%= vo.getSno() %>'">수정</button></td>
             </tr>
         </table>
         <table style="top: 225px;">

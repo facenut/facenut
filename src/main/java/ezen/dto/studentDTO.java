@@ -13,24 +13,31 @@ public class studentDTO extends DBManager {
 	public boolean join(studentinfoVO vo) {
 		this.driverLoad();
 		this.dbConnect();
-		
+		System.out.println(vo.getSname());
+		System.out.println(vo.getClassno());
+		System.out.println(vo.getBirthday());
+		System.out.println(vo.getPhone());
 		String sql = "";
 		sql += "insert into studentinfo (sname, classno, birthday, phone) ";
 		sql += "values(";
-		sql += "'" + _R(vo.getSname())	  + "',";
-		sql += "'" + _R(vo.getClassno())  + "',";
-		sql += "'" + _R(vo.getBirthday()) + "',";
-		sql += "'" + _R(vo.getPhone())	  + "'";
+		sql += "'" + _R(vo.getSname())	  + "', ";
+		sql += " " + _R(vo.getClassno())  + ", ";
+		sql += "'" + _R(vo.getBirthday()) + "', ";
+		sql += "'" + _R(vo.getPhone())	  + "' ";
 		sql += ")";
-		this.execute(sql);
-		
-		this.dbDisconnect();
-		return true;	
+		int result = this.executeUpdate(sql);
+		if(result > 0) {
+			this.dbDisconnect();
+			return true;	
+		}else {
+			this.dbDisconnect();
+			return false;
+		}
 	}
 	
 	//회원정보 수정 처리
 	//리턴값 : true 이면 정보 변경, false 이면 변경 실패
-	public boolean Changeinfo(String sno, String sname, String phone)
+	public boolean Changeinfo(String sno, String sname, String phone, String classno)
 	{
 		this.driverLoad();
 		this.dbConnect();
@@ -39,6 +46,7 @@ public class studentDTO extends DBManager {
 		sql += "update user ";
 		sql += "set sname = '" + sname + "' ";
 		sql += "set phone = '" + phone + "' ";
+		sql += "set classno = '" + classno + "' ";
 		sql += "where sno = '" + sno + "' ";
 		this.execute(sql);
 		this.dbDisconnect();
@@ -52,7 +60,7 @@ public class studentDTO extends DBManager {
 		this.dbConnect();
 		
 		String sql  = "";
-		sql += "select sname,classno,birthday,phone, ";
+		sql += "select sname, classno, birthday, phone ";
 		sql += "from studentinfoVO ";
 		sql += "where sno = " + sno;
 		
@@ -60,10 +68,11 @@ public class studentDTO extends DBManager {
 		this.next();
 		
 		studentinfoVO vo = new studentinfoVO();
-		vo.setSname	(this.getString("sname"));
-		vo.setClassno (this.getString("classno"));
-		vo.setBirthday (this.getString("birthday"));
-		vo.setPhone	(this.getString("phone"));
+		vo.setSname	  	(this.getString("sname"));
+		vo.setClassno 	(this.getString("classno"));
+		vo.setBirthday 	(this.getString("birthday"));
+		vo.setPhone		(this.getString("phone"));
+		vo.setStatus	(this.getString("status"));
 		
 		this.dbDisconnect();
 		return vo;
