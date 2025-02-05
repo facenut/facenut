@@ -61,8 +61,8 @@ public class studentDTO extends DBManager {
 		
 		studentinfoVO vo = new studentinfoVO();
 		vo.setSname	(this.getString("sname"));
-		vo.setClassno		(this.getString("classno"));
-		vo.setBirthday	(this.getString("birthday"));
+		vo.setClassno (this.getString("classno"));
+		vo.setBirthday (this.getString("birthday"));
 		vo.setPhone	(this.getString("phone"));
 		
 		this.dbDisconnect();
