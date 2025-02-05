@@ -75,7 +75,11 @@
 				</tr>
 				<tr style="height:45px;">
 					<th style="padding-top:30px;">강좌명 :</th>
-					<td><input type="text" id="classname" name="classname" style="width:200px; padding-top:30px;"></td>
+					<td>
+						<input type="radio" id="classname" name="classname" value="1" style="padding-top:30px; margin-right:0px;">빅데이터
+						<input type="radio" id="classname" name="classname" value="2" style="padding-top:30px; margin-right:0px;">웹디자인
+						<input type="radio" id="classname" name="classname" value="3" style="padding-top:30px; margin-right:0px;">AWS
+					</td>
 				</tr>
 				<tr>
 					<th>생년월일 :</th>
