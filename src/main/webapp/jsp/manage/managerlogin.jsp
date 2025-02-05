@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>안면인식 회원가입</title>
+		<title>안면인식 기반 자동출결 시스템</title>
 	</head>
 	<body>
 		<style>
@@ -68,11 +68,14 @@
 				</tr>
 				<tr>
                     <td colspan="2" style="padding:150px 0px 30px 0px; padding-right: 1px; border-bottom:none; text-align:center; ">
-                        <button id="managerpwok"><a href="studentmanage.html" style="color:white; text-decoration:none;">확인</a></button>
+                        <button id="managerpwok"><a href="studentmanage.html" style="color:white; text-decoration:none; ">확인</a></button>
                     </td>
                 </tr>
 			</table>
 		</form>
+		<div style="width: 150px; border-right: none; padding-left: 181px;">
+            <img src="logo.png" style="width: 120px;">
+        </div>
 		</section>
 	</body>
 </html>

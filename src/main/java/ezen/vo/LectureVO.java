@@ -22,5 +22,4 @@ public class LectureVO
 	public String getEnd_hour()	    { return end_hour;		}
 	public String getBegin_date()	{ return begin_date; 	}
     public String getEnd_date()	    { return end_date; 	    }
-
 }

@@ -57,15 +57,60 @@
             }
             input:focus{ outline:none; }   
 		</style>
+		<script src="./js/jquery-3.7.1.js"></script>
+		<script>
+		$(document).ready(function() {
+		    $("#joinOk").click(function() {
+		        Dosubmit();
+		    });
+		});
+
+		function Dosubmit() {
+		    if ($("#username").val() == "") {
+		        alert("이름을 입력하세요.");
+		        $("#username").focus();
+		        return;
+		    }
+		}
+				/* function DoSubmit() {
+					if( $("#username").val() == "" )
+					{
+						alert("이름을 입력하세요.");
+						$("#username").focus();
+						return;
+					}
+					if( $("#userphone").val() == "" )
+					{
+						alert("전화번호를 입력하세요.");
+						$("#userphone").focus();
+						return;
+					}
+					if( $("#userbirth").val() == "" )
+					{
+						alert("생년월일을 입력하세요.");
+						$("#userbirth").focus();
+						return;
+					} */
+					/* if(confirm("회원가입을 완료하시겠습니까?")  == true)
+					{
+						document.forms.user.submit();
+					}	
+				} */
+				
+				/* function DoCancel() {
+					location.href="facerecog.html";
+				}
+			}); */
+		</script>
 		<section>
         <div class="container">
             <h1></h1>
 		<div class="join">회원가입</div>
-		<form action="#" name="user" method="post">
+		<form action="joinOk.jsp" name="student" method="post">
 			<table style="width:500px; padding: 50px 50px 0px 50px; margin:0px auto; background-color:white; text-align:center;">
 				<tr>
 					<th>이름 :</th>
-					<td><input type="text" id="userName" name="username" style="width:200px;"></td>
+					<td><input type="text" id="username" name="username" style="width:200px;"></td>
 				</tr>
 				<tr>
 					<th>전화번호 :</th>
@@ -75,30 +120,27 @@
 				</tr>
 				<tr style="height:45px;">
 					<th style="padding-top:30px;">강좌명 :</th>
-					<td><input type="text" id="classname" name="classname" style="width:200px; padding-top:30px;"></td>
+					<td>
+						<input type="radio" class="classname" name="classname" value="1" style="padding-top:30px; margin-right:0px;">빅데이터
+						<input type="radio" class="classname" name="classname" value="2" style="padding-top:30px; margin-right:0px;">웹디자인
+						<input type="radio" class="classname" name="classname" value="3" style="padding-top:30px; margin-right:0px;">AWS
+					</td>
 				</tr>
 				<tr>
 					<th>생년월일 :</th>
 					<td><input type="text" id= "userbirth" name="userbirth" style="width:200px;"></td>
 				</tr>
 				<tr>
-                    <td colspan="2" style="padding:80px 0px; padding-right: 1px; border-bottom:none; text-align:center; ">
-                        <button type="button" class="button" onclick="joinok();" style="color:white; text-decoration:none;">가입완료</button>
+                    <td colspan="2" style="padding:65px 0px; padding-right: 1px; border-bottom:none; text-align:center; ">
+                        <button type="button" id="joinOk" style="color:white; text-decoration:none;">가입완료</button>
                         <button type="button" id="joinCancel" onclick="DoCancel()" style="color:white; text-decoration:none;">가입취소</button>
                     </td>
                 </tr>
 			</table>
 		</form>
+		<div style="width: 150px; border-right: none; padding-left: 181px;">
+            <img src="../img/logo.png" style="width: 120px;">
+        </div>
 		</section>
-		<script>
-			function joinok() {
-				if(confirm("회원가입을 완료하시겠습니까?") == true){
-					document.user.submit();
-				}
-			}
-			function DoCancel() {
-				location.href="faceregist.html";
-			}
-		</script>
 	</body>
 </html>
