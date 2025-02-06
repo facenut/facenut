@@ -83,14 +83,14 @@ studentinfoVO vo = dto.read(sno);
 <body>
     <div class="container">
         <div style="width: 150px; border-right: none; padding-left: 10px;">
-            <img src="logo.png" style="width: 150px;">
+            <img src="../../img/logo.png" style="width: 150px;">
         </div>
         <div class="managermenu" style="width:160px;  margin-left:220px; padding-top: 37px;">
             <div style="background-color: #379fc5e7; width:160px; text-align:center; font-size:20px; color:#fcfcfc; border:1px solid darkgray; font-weight:bold; padding:5px 0px;">관리자<br>
-                <a href="managerlogin.html" style="color: #fcfcfc;">(로그아웃)</a></div>
-            <ul><a href="studentmanage.html" class="menu">· 학생관리</a></ul>
-            <ul><a href="approve.html" class="menu">· 승인대기</a></ul>
-            <ul style="border-bottom:1px solid darkgray;"><a href="attendance.html" class="menu">· 출결관리</a></ul>
+                <a href="managerlogin.jsp" style="color: #fcfcfc;">(로그아웃)</a></div>
+            <ul><a href="studentmanage.jsp" class="menu">· 학생관리</a></ul>
+            <ul><a href="approve.jsp" class="menu">· 승인대기</a></ul>
+            <ul style="border-bottom:1px solid darkgray;"><a href="attendance.jsp" class="menu">· 출결관리</a></ul>
         </div>
         <table>
             <tr style="border: none;">
@@ -99,19 +99,19 @@ studentinfoVO vo = dto.read(sno);
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;" >이름</th>
-                <td style="text-align: center;"><% vo.getSname() %></td>
+                <td style="text-align: center;"><% vo.getSname(); %></td>
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;">강좌</th>
-                <td style="text-align: center;"><% vo.getClassno() %></td>
+                <td style="text-align: center;"><% vo.getClassno(); %></td>
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;">전화번호</th>
-                <td style="text-align: center;"><% vo.getPhone() %></td>
+                <td style="text-align: center;"><% vo.getPhone(); %></td>
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;">생년월일</th>
-                <td style="text-align: center;"><% vo.getBirthday() %></td>
+                <td style="text-align: center;"><% vo.getBirthday(); %></td>
             </tr>
             <tr  style="border-bottom: none; ">
                 <td colspan="2" style="border-bottom: none; border-right: none; text-align:right;"><button style="width:60px; height:30px; background-color: #1895be; border:none; font-size:15px; border-radius: 5px; cursor:pointer; color:white; font-weight:bold;" onclick="window.location.href='modify.jsp?sno=<%= vo.getSno() %>'">수정</button></td>

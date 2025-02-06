@@ -4,7 +4,7 @@
 <%@page import="ezen.vo.*"%>
 <%
 studentDTO dto = new studentDTO();
-studentinfoVO vo = dto.read(sno);
+studentinfoVO vo = dto.read("sno");
 %>
 <!DOCTYPE html>
 <html>
@@ -65,39 +65,39 @@ studentinfoVO vo = dto.read(sno);
 		</style>
 		<section>
         <div class="container">
-            <h1></h1>
-		<div class="modify">회원수정</div>
-		<form action="modifyok.jsp" name="user" id="user" method="get">
-			<table style="width:500px; padding: 50px 50px 0px 50px; margin:0px auto; background-color:white; text-align:center;">
-				<tr>
-					<th>이름 :</th>
-					<td><input type="text" id="userName" name="username" style="width:200px;"><% vo.getSname() %></td>
-				</tr>
-				<tr>
-					<th>전화번호 :</th>
-					<td>
-						<input type="text" id="userphone" name="userphone" style="width:200px; padding-top:10px;"><% vo.getPhone() %>
-					</td>
-				</tr>
-				<tr style="height:45px;">
-					<th style="padding-top:30px;">강좌명 :</th>
-					<td><input type="text" id="classname" name="classname" style="width:200px; padding-top:30px;"><% vo.getClassno() %></td>
-				</tr>
-				<tr>
-					<th>생년월일 :</th>
-					<td><input type="text" id= "userbirth" name="userbirth" style="width:200px;"><% vo.getBirthday() %></td>
-				</tr>
-				<tr>
-                    <td colspan="2" style="padding:65px 0px; padding-right: 1px; border-bottom:none; text-align:center; ">
-                        <button class="button" onclick="modifyok()" style="color:white; text-decoration:none;">수정완료</button>
-                        <button type="button" id="joinCancel" onclick="DoCancel()" style="color:white; text-decoration:none;">수정취소</button>
-                    </td>
-                </tr>
-			</table>
-		</form>
-		<div style="width: 150px; border-right: none; padding-left: 181px;">
-            <img src="logo.png" style="width: 120px;">
-        </div>
+			<div class="modify">회원수정</div>
+			<form action="modifyok.jsp" name="user" id="user" method="get">
+				<table style="width:500px; padding: 50px 50px 0px 50px; margin:0px auto; background-color:white; text-align:center;">
+					<tr>
+						<th>이름 :</th>
+						<td><input type="text" id="userName" name="username" style="width:200px;"><% vo.getSname(); %></td>
+					</tr>
+					<tr>
+						<th>전화번호 :</th>
+						<td>
+							<input type="text" id="userphone" name="userphone" style="width:200px; padding-top:10px;"><% vo.getPhone(); %>
+						</td>
+					</tr>
+					<tr style="height:45px;">
+						<th style="padding-top:30px;">강좌명 :</th>
+						<td><input type="text" id="classname" name="classname" style="width:200px; padding-top:30px;"><% vo.getClassno(); %></td>
+					</tr>
+					<tr>
+						<th>생년월일 :</th>
+						<td><input type="text" id= "userbirth" name="userbirth" style="width:200px;"><% vo.getBirthday(); %></td>
+					</tr>
+					<tr>
+	                    <td colspan="2" style="padding:65px 0px; padding-right: 1px; border-bottom:none; text-align:center; ">
+	                        <button class="button" onclick="modifyok()" style="color:white; text-decoration:none;">수정완료</button>
+	                        <button type="button" id="joinCancel" onclick="DoCancel()" style="color:white; text-decoration:none;">수정취소</button>
+	                    </td>
+	                </tr>
+				</table>
+			</form>
+			<div style="width: 150px; border-right: none; padding-left: 181px;">
+	            <img src="../../img/logo.png" style="width: 120px;">
+	        </div>
+	    </div>
 		</section>
 	</body>
 	<script>
@@ -107,7 +107,7 @@ studentinfoVO vo = dto.read(sno);
 			}
 		}
 		function DoCancel() {
-			location.href="studentinfo.html";
+			location.href="studentinfo.jsp";
 		}
 
 	</script>

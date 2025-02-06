@@ -1,5 +1,7 @@
 package ezen.dto;
 
+import java.sql.PreparedStatement;
+
 import ezen.dao.DBManager;
 import ezen.vo.studentinfoVO;
 
@@ -78,6 +80,35 @@ public class studentDTO extends DBManager {
 		return vo;
 	}
 	
+	// 승인대기 학생 목록
+	// status: 구분(0=대기, 1=승인, 2=삭제)
+	// 리턴값 : 학생정보의 갯수
+	public updateStatus (String sno) {
+	    this.driverLoad();
+	    this.dbConnect();
+	    
+	    String sql  = "";
+	    sql += "select sname, classno, birthday, phone, status ";  // status 추가
+	    sql += "from studentinfoVO "; 
+	    sql += "where sno = " + sno;  // 현재 형태 그대로 진행
+	    
+	    this.executeQuery(sql);
+	    this.next();
+	    
+	    studentinfoVO vo = new studentinfoVO();
+	    vo.setSname   (this.getString("sname"));
+	    vo.setClassno (this.getString("classno"));
+	    vo.setBirthday(this.getString("birthday"));
+	    vo.setPhone   (this.getString("phone"));
+	    vo.setStatus  (this.getString("status"));  // status 값도 가져오기
+	    
+	    this.dbDisconnect();
+	    return vo;
+	}
+
+
+
+
 	// 학생 데이터의 전체 갯수를 얻는다.
 	// classno: 구분(1=빅데이터, 2=웹디자인, 3=AWS)
 	// 리턴값 : 학생정보의 갯수
@@ -95,4 +126,24 @@ public class studentDTO extends DBManager {
 		dbDisconnect();
 		return total;
 	}
+	
+	/*
+	 * //승인여부 //0 = 대기, 1 = 승인, 2 = 삭제 //리턴값 : true 이면 승인 처리, false 이면 실패 public
+	 * boolean approve(String sno) { this.driverLoad(); this.dbConnect();
+	 * 
+	 * String sql = ""; sql += "UPDATE studentinfo "; sql += "SET status = CASE ";
+	 * sql += "WHEN status = 0 THEN 1 "; // 대기 상태(0)일 때 승인(1) sql +=
+	 * "WHEN status = 0 THEN 2 "; // 대기 상태(0)일 때 삭제(2) sql +=
+	 * "WHEN status = 1 THEN 2 "; // 승인 상태(1)일 때 삭제(2) sql += "END "; sql +=
+	 * "WHERE sno = '" + sno + "' ";
+	 * 
+	 * System.out.println(sql); int result = this.executeUpdate(sql);
+	 * System.out.println(result);
+	 * 
+	 * this.dbDisconnect();
+	 * 
+	 * return result == 1 || result == 2; }
+	 */
+	
 }
+

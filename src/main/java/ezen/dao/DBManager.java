@@ -48,6 +48,7 @@ public class DBManager {
 		String url = "jdbc:mysql://localhost:3306/facenutdb";
 		String id = "root";
 		String pw = "ezen";
+		
 		try {
 			conn = DriverManager.getConnection(url, id, pw);
 		} catch (SQLException e) {

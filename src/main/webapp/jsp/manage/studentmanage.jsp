@@ -69,14 +69,14 @@
     <body>
         <div class="container">
             <div style="width: 150px; border-right: none; padding-left: 10px;">
-                <img src="logo.png" style="width: 150px;">
+                <img src="../../img/logo.png" style="width: 150px;">
             </div>
             <div class="managermenu" style="width:160px;  margin-left:220px; padding-top: 39px;">
                 <div style="background-color: #379fc5e7; width:160px; text-align:center; font-size:20px; color:#fcfcfc; border:1px solid darkgray; font-weight:bold; padding:5px 0px;">관리자<br>
-                    <a href="managerlogin.html" style="color: #fcfcfc;">(로그아웃)</a></div>
-                <ul><a href="studentmanage.html" class="menu">· 학생관리</a></ul>
-                <ul><a href="approve.html" class="menu">· 승인대기</a></ul>
-                <ul style="border-bottom:1px solid darkgray;"><a href="attendance.html" class="menu">· 출결관리</a></ul>
+                    <a href="managerlogin.jsp" style="color: #fcfcfc;">(로그아웃)</a></div>
+                <ul><a href="studentmanage.jsp" class="menu">· 학생관리</a></ul>
+                <ul><a href="approve.jsp" class="menu">· 승인대기</a></ul>
+                <ul style="border-bottom:1px solid darkgray;"><a href="attendance.jsp" class="menu">· 출결관리</a></ul>
             </div>
             <form action="#" method="post" name="student">
                 <table>
@@ -93,163 +93,7 @@
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td ><a href="studentinfo.html" >홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td ><a href="studentinfo.html">홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><a href="studentinfo.html">홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><a href="studentinfo.html">홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td >1</td>
-                        <td><a href="studentinfo.html">홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td >1</td>
-                        <td><a href="studentinfo.html">홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><a href="studentinfo.html">홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td >1</td>
-                        <td><a href="studentinfo.html">홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><a href="studentinfo.html">홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td >1</td>
-                        <td><a href="studentinfo.html">홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td >1</td>
-                        <td><a href="studentinfo.html">홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><a href="studentinfo.html">홍길동</a></td>
-                        <td>빅데이터</td>
-                        <td>010-1111-2222</td>
-                        <td>1990.01.17</td>
-                        <td style="border-right: none;">
-                            <select style="border-radius: 5px;">
-                                <option>승인</option>
-                                <option>삭제</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td >1</td>
-                        <td><a href="studentinfo.html">홍길동</a></td>
+                        <td ><a href="studentinfo.jsp" >홍길동</a></td>
                         <td>빅데이터</td>
                         <td>010-1111-2222</td>
                         <td>1990.01.17</td>
