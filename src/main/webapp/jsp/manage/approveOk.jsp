@@ -12,13 +12,22 @@
 
     // DAO 객체 생성
     studentDTO dto = new studentDTO();
-
-    // 학생 상태 업데이트
-    boolean result = dto.updateStatus(sno, status);
-
-    if (result) {
-        out.println("<script>alert('상태가 성공적으로 변경되었습니다.'); location.href='approve.jsp';</script>");
+    studentinfoVO vo = new studentinfoVO();
+    if( dto.approve(sno,status) == true){
+    	// 가입 성공시
+    	%>
+    	<script>
+    		alert('승인 완료'); location.href='studentmanage.jsp';
+    	</script>
+    	<%
     } else {
-        out.println("<script>alert('상태 변경에 실패했습니다.'); history.back();</script>");
+    	// 가입 실패시
+    	%>
+    	<script>
+    		alert('삭제 완료'); location.href='approve.jsp';
+    	</script>
+    	<%
+    
     }
+    
 %>

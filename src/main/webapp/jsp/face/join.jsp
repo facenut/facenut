@@ -23,7 +23,8 @@
             height: 600px;
             text-align: center;
             margin-top:150px;
-            margin-left:700px;
+            margin-left:auto;
+            margin-right:auto;
             position: relative;
 		    }
 			tr{ height:39px; text-align:center; }

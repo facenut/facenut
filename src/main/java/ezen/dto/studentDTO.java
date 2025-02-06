@@ -83,19 +83,20 @@ public class studentDTO extends DBManager {
 	// 승인대기 학생 목록
 	// status: 구분(0=대기, 1=승인, 2=삭제)
 	// 리턴값 : 학생정보의 갯수
-	public updateStatus (String sno) {
+	public studentinfoVO updateStatus (String sno,String status) {
 	    this.driverLoad();
 	    this.dbConnect();
 	    
 	    String sql  = "";
-	    sql += "select sname, classno, birthday, phone, status ";  // status 추가
-	    sql += "from studentinfoVO "; 
+	    sql += "select sno, sname, classno, birthday, phone, status ";  // status 추가
+	    sql += "from studentinfo "; 
 	    sql += "where sno = " + sno;  // 현재 형태 그대로 진행
-	    
+	    System.out.println(sql);
 	    this.executeQuery(sql);
 	    this.next();
 	    
 	    studentinfoVO vo = new studentinfoVO();
+	    vo.setSno   (this.getString("sno"));
 	    vo.setSname   (this.getString("sname"));
 	    vo.setClassno (this.getString("classno"));
 	    vo.setBirthday(this.getString("birthday"));
@@ -127,23 +128,32 @@ public class studentDTO extends DBManager {
 		return total;
 	}
 	
-	/*
-	 * //승인여부 //0 = 대기, 1 = 승인, 2 = 삭제 //리턴값 : true 이면 승인 처리, false 이면 실패 public
-	 * boolean approve(String sno) { this.driverLoad(); this.dbConnect();
-	 * 
-	 * String sql = ""; sql += "UPDATE studentinfo "; sql += "SET status = CASE ";
-	 * sql += "WHEN status = 0 THEN 1 "; // 대기 상태(0)일 때 승인(1) sql +=
-	 * "WHEN status = 0 THEN 2 "; // 대기 상태(0)일 때 삭제(2) sql +=
-	 * "WHEN status = 1 THEN 2 "; // 승인 상태(1)일 때 삭제(2) sql += "END "; sql +=
-	 * "WHERE sno = '" + sno + "' ";
-	 * 
-	 * System.out.println(sql); int result = this.executeUpdate(sql);
-	 * System.out.println(result);
-	 * 
-	 * this.dbDisconnect();
-	 * 
-	 * return result == 1 || result == 2; }
-	 */
+	
+	 //승인여부 //0 = 대기, 1 = 승인, 2 = 삭제 //리턴값 : true 이면 승인 처리, false 이면 실패 public
+	 public boolean approve(String sno,String status) { 
+		 this.driverLoad(); 
+		 this.dbConnect();
+	 
+		 String sql = ""; 
+		 sql += " UPDATE studentinfo "; 
+		 sql += " SET status = " + status + " ";
+		 sql += " WHERE sno = '" + sno + "' ";
+		 System.out.println(sql); 
+		 
+		 int result = this.executeUpdate(sql);
+		 System.out.println(result);
+		 
+		 this.dbDisconnect();
+		 
+		 if(result == 1) {
+				this.dbDisconnect();
+				return true;	
+			}else {
+				this.dbDisconnect();
+				return false;
+			}
+		 }
+		 
 	
 }
 
