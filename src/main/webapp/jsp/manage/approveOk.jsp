@@ -13,7 +13,7 @@
     // DAO 객체 생성
     studentDTO dto = new studentDTO();
     studentinfoVO vo = new studentinfoVO();
-    if( dto.approve(sno,status) == true){
+    if( dto.approve(sno,status) == true && sno == "1"){
     	// 가입 성공시
     	%>
     	<script>
@@ -24,10 +24,8 @@
     	// 가입 실패시
     	%>
     	<script>
-    		alert('삭제 완료'); location.href='approve.jsp';
+    		alert('승인 취소'); location.href='approve.jsp';
     	</script>
     	<%
-    
     }
-    
 %>

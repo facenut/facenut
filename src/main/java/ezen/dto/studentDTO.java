@@ -1,6 +1,7 @@
 package ezen.dto;
 
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 import ezen.dao.DBManager;
 import ezen.vo.studentinfoVO;
@@ -89,7 +90,7 @@ public class studentDTO extends DBManager {
 	    
 	    String sql  = "";
 	    sql += "select sno, sname, classno, birthday, phone, status ";  // status 추가
-	    sql += "from studentinfo "; 
+	    sql += "from studentinfo ";
 	    sql += "where sno = " + sno;  // 현재 형태 그대로 진행
 	    System.out.println(sql);
 	    this.executeQuery(sql);
@@ -113,19 +114,54 @@ public class studentDTO extends DBManager {
 	// 학생 데이터의 전체 갯수를 얻는다.
 	// classno: 구분(1=빅데이터, 2=웹디자인, 3=AWS)
 	// 리턴값 : 학생정보의 갯수
-	public int GetTotal(String classno) {
+	public int GetTotal(String status) {
 		driverLoad();
 		dbConnect();
 		
 		String sql = "";
 		sql += "select count(*) as total ";
 		sql += "from studentinfoVO ";
-		sql += "where classno = '" + classno + "' and bigdata = '1', webdesign = '2', AWS = '3'";
+		sql += "where status = '" + status + "' and approve = '1'";
 		executeQuery(sql);
 		int total = this.getInt("total");
 		
 		dbDisconnect();
 		return total;
+	}
+	
+	// 학생 목록 조회 : 목록을 ArrayList 변수 list 에 최신순으로 저장
+	public ArrayList<studentinfoVO> GetList(String sno, int pageno, String status) {
+		
+		ArrayList<studentinfoVO> list = new ArrayList<studentinfoVO>();
+		
+		//int startno = (pageno - 1) * 10;
+		
+		this.driverLoad();
+		this.dbConnect();
+		
+		String sql = "";
+		sql += "select no, title, wdate, userid, hit, isguest, deleted, ";
+		sql += "(select usernick from user where userid = board.userid) as usernick, ";
+		sql += "(select count(*) from reply where no = board.no and rdeleted = 0 and depth = 0) as count ";
+		sql += "from board ";
+		sql += "where sno = '" + sno + "' and status = '" + status + "' ";
+		sql += "order by no desc ";
+		//sql += "limit " + startno + "," + studentinfoVO.pageRows;
+		
+		executeQuery(sql);
+		
+		while(next()) {
+			studentinfoVO vo = new studentinfoVO();
+			vo.setSno		(getString("sno"));
+			vo.setSname		(getString("sname"));
+			vo.setClassno	(getString("classno"));
+			vo.setBirthday		(getString("birthday"));
+			vo.setPhone	(getString("phone"));
+			vo.setStatus	(getString("status"));
+		}
+		
+		dbDisconnect();
+		return list;
 	}
 	
 	
