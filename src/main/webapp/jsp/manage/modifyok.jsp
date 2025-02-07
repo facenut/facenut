@@ -17,24 +17,3 @@ vo.setSname(sname);
 vo.setPhone(phone);
 vo.setClassno(classno);
 
-studentDTO dto = new studentDTO();
-boolean result = dto.Changeinfo(sno, sname, phone, classno);
-
-if(result) {
-	// 수정 성공시
-		%>
-		<script>
-			alert('수정이 완료되셨습니다.'); 
-			location.href='studentinfo.jsp';
-		</script>
-		<%
-	} else {
-		// 수정 실패시
-		%>
-		<script>
-			alert('오류가 발생하였습니다. 다시 시도해주세요.'); 
-			location.href='modify.jsp';
-		</script>
-		<%
-	}
-%>
