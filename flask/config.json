@@ -1,0 +1,12 @@
+{
+    "DEV_MODE": true,
+    "CAMERA_WIDTH": 800,
+    "CAMERA_HEIGHT": 600,
+    "MTCNN": {
+      "min_face_size": 60,
+      "thresholds": [0.6, 0.7, 0.7]
+    },
+    "FONT_PATH": "C:/Windows/Fonts/MALGUN.TTF",
+    "EMBEDDING_THRESHOLD": 1.0
+  }
+  
