@@ -56,30 +56,6 @@ public class studentDTO extends DBManager {
 		
 		return true;
 	}
-	
-	//회원삭제 처리
-		//리턴값 : true 이면 삭제 처리, false 이면 실패
-		public boolean delete(String sno, String status)
-		{
-			this.driverLoad();
-			this.dbConnect();
-			
-			String sql = "";
-			sql += "update user ";
-			sql += "set status = 2 ";
-			sql += "where sno = '" + sno;
-			System.out.println(sql);
-			int result = this.executeUpdate(sql);
-			System.out.println(result);
-			if( result == 1) {
-				// 삭제 완료
-				this.dbDisconnect();
-				return true;
-			}
-			// 오류 발생
-			this.dbDisconnect();
-			return false;
-		}
 		
 	//회원정보 조회	
 	public studentinfoVO read(String sno) {

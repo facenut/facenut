@@ -110,6 +110,7 @@ if( list != null ){
 				for(studentinfoVO vo : list) {
 					String sno = vo.getSno();
 				%>
+				<form action="deleteOk.jsp" method="post" name="approve">
 				<tr>
 				    <td><%= sno %></td>
 				<td><a style="text-decoration:none;"><%= vo.getSname() %></a></td>
@@ -134,7 +135,6 @@ if( list != null ){
 				<td><%= vo.getPhone() %></td>
 				<td><%= vo.getBirthday() %></td>
 				<td style="border-right: none;">
-				<form action="deleteOk.jsp" method="post" name="approve">
 				    <select style="border-radius: 5px;" name="status">
 				                      <option selected value="1">승인</option>
 				                      <option value="2">삭제</option>

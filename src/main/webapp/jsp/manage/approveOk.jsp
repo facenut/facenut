@@ -19,6 +19,7 @@
     		break;
     	case "2" :
     		addr = "approve.jsp";
+    		break;
     }
 
     // DTO 객체 생성
