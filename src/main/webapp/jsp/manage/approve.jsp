@@ -143,7 +143,7 @@ studentinfoVO vo = dto.updateStatus(sno, status);
                 }
                 %> --%>
             </table>
-            <input type="hidden" name="sno" value="<%= vo.getStatus() %>">
+            <input type="hidden" name="sno" value="<%= sno %>">
             <button type="button" onclick="submitOk()" style="width:95px; height:35px; font-weight:bold; background-color: #1895be; border:none; color:white; font-size:15px; border-radius: 5px; position:absolute; bottom: 190px; right:563px; cursor:pointer;">확인</button>
         </form>
     </div>
