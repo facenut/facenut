@@ -19,7 +19,7 @@ public class studentinfoVO {
 	public void setClassno 	(String classno)  {	this.classno = classno;		}
 	public void setBirthday (String birthday) {	this.birthday = birthday;	}
 	public void setPhone 	(String phone) 	  {	this.phone = phone;		 	}
-	public void setStatus 	(String status)   {	this.status = status;		 	}
+	public void setStatus 	(String status)   {	this.status = status;	 	}
 	
 	//getter
 	public String getSno() 		{	return sno;		}

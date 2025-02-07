@@ -10,21 +10,28 @@
     String sno = request.getParameter("sno");
     String status = request.getParameter("status");
 
-    // DAO 객체 생성
+    // DTO 객체 생성
     studentDTO dto = new studentDTO();
     studentinfoVO vo = new studentinfoVO();
-    if( dto.approve(sno,status) == true && sno == "1"){
-    	// 가입 성공시
+    if( dto.approve(sno,status) == true) {
+    	// 변경 성공시
     	%>
     	<script>
-    		alert('승인 완료'); location.href='studentmanage.jsp';
+    		alert('변경 완료');
+    	<%
+    		if(status == "0") {
+    			%>location.href='approve.jsp';<%
+    		} else if(status == "1") {  
+    			%>location.href='studentmanage.jsp';<%
+    		}
+    	%>
     	</script>
     	<%
     } else {
-    	// 가입 실패시
+    	// 변경 실패시
     	%>
     	<script>
-    		alert('승인 취소'); location.href='approve.jsp';
+    		alert('변경 실패'); location.href='approve.jsp';
     	</script>
     	<%
     }

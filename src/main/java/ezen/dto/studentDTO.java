@@ -83,30 +83,30 @@ public class studentDTO extends DBManager {
 	
 	// 승인대기 학생 목록
 	// status: 구분(0=대기, 1=승인, 2=삭제)
-	// 리턴값 : 학생정보의 갯수
-	public studentinfoVO updateStatus (String sno,String status) {
-	    this.driverLoad();
-	    this.dbConnect();
-	    
-	    String sql  = "";
-	    sql += "select sno, sname, classno, birthday, phone, status ";  // status 추가
-	    sql += "from studentinfo ";
-	    sql += "where status = 0";
-	    System.out.println(sql);
-	    this.executeQuery(sql);
-	    this.next();
-	    
-	    studentinfoVO vo = new studentinfoVO();
-	    vo.setSno   (this.getString("sno"));
-	    vo.setSname   (this.getString("sname"));
-	    vo.setClassno (this.getString("classno"));
-	    vo.setBirthday(this.getString("birthday"));
-	    vo.setPhone   (this.getString("phone"));
-	    vo.setStatus  (this.getString("status"));  // status 값도 가져오기
-	    
-	    this.dbDisconnect();
-	    return vo;
-	}
+	// 리턴값 : 미승인 학생목록과 정보
+//	public studentinfoVO notApproved() {
+//	    this.driverLoad();
+//	    this.dbConnect();
+//	    
+//	    String sql  = "";
+//	    sql += "select sno, sname, classno, birthday, phone, status ";  // status 추가
+//	    sql += "from studentinfo ";
+//	    sql += "where status = 0";
+//	    System.out.println(sql);
+//	    this.executeQuery(sql);
+//	    this.next();
+//	    
+//	    studentinfoVO vo = new studentinfoVO();
+//	    vo.setSno   (this.getString("sno"));
+//	    vo.setSname   (this.getString("sname"));
+//	    vo.setClassno (this.getString("classno"));
+//	    vo.setBirthday(this.getString("birthday"));
+//	    vo.setPhone   (this.getString("phone"));
+//	    vo.setStatus  (this.getString("status"));  // status 값도 가져오기
+//	    
+//	    this.dbDisconnect();
+//	    return vo;
+//	}
 
 
 
@@ -130,7 +130,7 @@ public class studentDTO extends DBManager {
 	}
 	
 	// 학생 목록 조회
-	public ArrayList<studentinfoVO> GetList(String sno, String status) {
+	public ArrayList<studentinfoVO> GetList(String status) {
 		
 		ArrayList<studentinfoVO> list = new ArrayList<studentinfoVO>();
 		
@@ -142,7 +142,9 @@ public class studentDTO extends DBManager {
 		String sql = "";
 		sql += "select sno, sname, classno, birthday, phone, status ";
 		sql += "from studentinfo ";
-		sql += "where status = 1";
+		sql += "where status = " + status;
+		
+		System.out.println(sql);
 		
 		executeQuery(sql);
 		
@@ -151,9 +153,10 @@ public class studentDTO extends DBManager {
 			vo.setSno		(getString("sno"));
 			vo.setSname		(getString("sname"));
 			vo.setClassno	(getString("classno"));
-			vo.setBirthday		(getString("birthday"));
-			vo.setPhone	(getString("phone"));
+			vo.setBirthday	(getString("birthday"));
+			vo.setPhone		(getString("phone"));
 			vo.setStatus	(getString("status"));
+			list.add(vo);
 		}
 		
 		dbDisconnect();

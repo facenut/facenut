@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page import="ezen.dao.*" %>
 <%@ page import="ezen.dto.*" %>
 <%@ page import="ezen.vo.*" %>
@@ -6,27 +7,13 @@
 // 한글 인코딩 처리
 request.setCharacterEncoding("utf-8");
 
-// sno를 URL 파라미터로 받음 (학생의 고유번호)
-String sno = request.getParameter("sno");
-String status = request.getParameter("status");
-String classno = request.getParameter("classno");
-String className ="";
-if(classno != null || classno != "") {
-	switch(classno){
-	    case "1" :
-	    	className = "빅데이터";
-	    	break;
-	    case "2" :
-	    	className = "웹디자인";
-		    break;
-	    case "3" :
-	    	className = "AWS";
-		    break;
-	}
-}
 // studentDTO 객체 생성 및 데이터 읽기
-studentDTO dto = new studentDTO();
-studentinfoVO vo = dto.updateStatus(sno, status);
+studentDTO dto 	 = new studentDTO();
+String status = "0";
+ArrayList<studentinfoVO> list = dto.GetList(status);
+if( list != null ){
+	System.out.println(list.size());
+}
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -121,13 +108,29 @@ studentinfoVO vo = dto.updateStatus(sno, status);
                     <th style="border-right: none;">등록현황</th>
                 </tr>
                 <%
-                // status가 0인 경우만 처리
-                if (status != null && status.equals("0")) {
-                    // status가 0 경우에만 해당 정보를 표시하도록 처리
+                for(studentinfoVO vo : list) {
+                	String sno = vo.getSno();
                 %>
                 <tr>
-                    <td><%= vo.getSno() %></td>
+                    <td><%= sno %></td>
                     <td><a style="text-decoration:none;"><%= vo.getSname() %></a></td>
+						<%
+						String classno	 = vo.getClassno();
+						String className = "";
+						if(classno != null || classno != "") {
+							switch(classno) {
+							    case "1" :
+							    	className = "빅데이터";
+							    	break;
+							    case "2" :
+							    	className = "웹디자인";
+								    break;
+							    case "3" :
+							    	className = "AWS";
+								    break;
+							}
+						}
+						%>
                     <td><%= className %></td>
                     <td><%= vo.getPhone() %></td>
                     <td><%= vo.getBirthday() %></td>
@@ -137,14 +140,14 @@ studentinfoVO vo = dto.updateStatus(sno, status);
                             <option value="1">승인</option>
                             <option value="2">삭제</option>
                         </select>
+						<input type="hidden" name="sno" value="<%= sno %>">
+						<button type="button" onclick="submitOk()" style="width:95px; height:35px; font-weight:bold; background-color: #1895be; border:none; color:white; font-size:15px; border-radius: 5px; bottom: 190px; right:563px; cursor:pointer;">확인</button>
                     </td>
                 </tr>
-                <%
-                }
-                %>
+				<%
+				}
+				%>
             </table>
-            <input type="hidden" name="sno" value="<%= sno %>">
-            <button type="button" onclick="submitOk()" style="width:95px; height:35px; font-weight:bold; background-color: #1895be; border:none; color:white; font-size:15px; border-radius: 5px; position:absolute; bottom: 190px; right:563px; cursor:pointer;">확인</button>
         </form>
     </div>
 </body>
