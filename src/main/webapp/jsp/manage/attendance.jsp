@@ -126,7 +126,7 @@ String sno = request.getParameter("sno");
                     <th rowspan="2">수업</th>
                     <th rowspan="2">날짜</th>
                     <th>출결</th>
-                    <th rowspan="2" style= "border-right: 2px solid darkgray; border-right: none;">이용자 통계</th>
+                    <th rowspan="2" style= "border-right: 2px solid darkgray; border-right: none;">출결 상태</th>
                 </tr>
                 <tr style="border-bottom: 2px solid darkgray;">
                     <td style="border-bottom: none; background-color: #379fc5e7;">
@@ -150,9 +150,10 @@ String sno = request.getParameter("sno");
                         </div>
                     </td>
                     <td style="border-right: none;" >
-                        <span>출0</span>
-                        <span>지0</span>
-                        <span>결0</span>
+                        <span>지각</span>
+                       <!--  <span>지0</span>
+                        <span>외0</span>
+                        <span>결0</span> -->
                     </td>
                 </tr>
             </table>
