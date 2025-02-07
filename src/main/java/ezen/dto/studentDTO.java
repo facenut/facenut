@@ -64,7 +64,7 @@ public class studentDTO extends DBManager {
 		
 		String sql  = "";
 		sql += "select sname, classno, birthday, phone ";
-		sql += "from studentinfoVO ";
+		sql += "from studentinfo ";
 		sql += "where sno = " + sno;
 		
 		this.executeQuery(sql);
@@ -120,7 +120,7 @@ public class studentDTO extends DBManager {
 		
 		String sql = "";
 		sql += "select count(*) as total ";
-		sql += "from studentinfoVO ";
+		sql += "from studentinfo ";
 		sql += "where status = '" + status + "' and approve = '1'";
 		executeQuery(sql);
 		int total = this.getInt("total");
@@ -141,7 +141,7 @@ public class studentDTO extends DBManager {
 		
 		String sql = "";
 		sql += "select sno, sname, classno, birthday, phone, status, ";
-		sql += "from studentinfoVO ";
+		sql += "from studentinfo ";
 		sql += "where sno = '" + sno + "' and status = '" + status + "' ";
 		
 		executeQuery(sql);

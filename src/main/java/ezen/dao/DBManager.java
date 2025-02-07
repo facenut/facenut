@@ -45,8 +45,8 @@ public class DBManager {
 		//String url = "jdbc:mysql://192.168.0.87:3306/facenut";
 		//String id  = "bteam";
 		//String pw  = "1234";
-		String url = "jdbc:mysql://localhost:3306/facenutdb";
-		String id = "root";
+		String url = "jdbc:mysql://192.168.0.231/facenutdb";
+		String id = "bteam";
 		String pw = "ezen";
 		
 		try {
