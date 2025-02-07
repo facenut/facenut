@@ -17,6 +17,8 @@
     	case "1" :
     		addr = "studentmanage.jsp";
     		break;
+    	case "2" :
+    		addr = "approve.jsp";
     }
 
     // DTO 객체 생성
