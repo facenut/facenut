@@ -91,7 +91,7 @@ public class studentDTO extends DBManager {
 	    String sql  = "";
 	    sql += "select sno, sname, classno, birthday, phone, status ";  // status 추가
 	    sql += "from studentinfo ";
-	    sql += "where sno = " + sno;  // 현재 형태 그대로 진행
+	    sql += "where status = 0";
 	    System.out.println(sql);
 	    this.executeQuery(sql);
 	    this.next();
@@ -121,7 +121,7 @@ public class studentDTO extends DBManager {
 		String sql = "";
 		sql += "select count(*) as total ";
 		sql += "from studentinfo ";
-		sql += "where status = '" + status + "' and approve = '1'";
+		sql += "where status = 1";
 		executeQuery(sql);
 		int total = this.getInt("total");
 		
@@ -140,9 +140,9 @@ public class studentDTO extends DBManager {
 		this.dbConnect();
 		
 		String sql = "";
-		sql += "select sno, sname, classno, birthday, phone, status, ";
+		sql += "select sno, sname, classno, birthday, phone, status ";
 		sql += "from studentinfo ";
-		sql += "where sno = '" + sno + "' and status = '" + status + "' ";
+		sql += "where status = 1";
 		
 		executeQuery(sql);
 		
@@ -161,7 +161,7 @@ public class studentDTO extends DBManager {
 	}
 	
 	
-	 //승인여부 //0 = 대기, 1 = 승인, 2 = 삭제 //리턴값 : true 이면 승인 처리, false 이면 실패 public
+	 //승인여부 //0 = 대기, 1 = 승인, 2 = 삭제 //리턴값 : true 이면 승인 처리, false 이면 실패
 	 public boolean approve(String sno,String status) { 
 		 this.driverLoad(); 
 		 this.dbConnect();
@@ -169,7 +169,7 @@ public class studentDTO extends DBManager {
 		 String sql = ""; 
 		 sql += " UPDATE studentinfo "; 
 		 sql += " SET status = " + status + " ";
-		 sql += " WHERE sno = '" + sno + "' ";
+		 sql += " WHERE sno = " + sno;
 		 System.out.println(sql); 
 		 
 		 int result = this.executeUpdate(sql);

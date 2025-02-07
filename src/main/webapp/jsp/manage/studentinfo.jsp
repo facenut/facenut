@@ -8,10 +8,6 @@
 request.setCharacterEncoding("utf-8");
 
 String sno = request.getParameter("sno");
-String sname  = request.getParameter("username");
-String phone = request.getParameter("userphone");
-String classno = request.getParameter("classname");
-String birthday = request.getParameter("userbirth");
 
 studentDTO dto = new studentDTO();
 studentinfoVO vo = dto.read(sno);
@@ -99,19 +95,19 @@ studentinfoVO vo = dto.read(sno);
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;" >이름</th>
-                <td style="text-align: center;"><% vo.getSname(); %></td>
+                <td style="text-align: center;"><%= vo.getSname() %></td>
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;">강좌</th>
-                <td style="text-align: center;"><% vo.getClassno(); %></td>
+                <td style="text-align: center;"><%= vo.getClassno() %></td>
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;">전화번호</th>
-                <td style="text-align: center;"><% vo.getPhone(); %></td>
+                <td style="text-align: center;"><%= vo.getPhone() %></td>
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;">생년월일</th>
-                <td style="text-align: center;"><% vo.getBirthday(); %></td>
+                <td style="text-align: center;"><%= vo.getBirthday() %></td>
             </tr>
             <tr  style="border-bottom: none; ">
                 <td colspan="2" style="border-bottom: none; border-right: none; text-align:right;"><button style="width:60px; height:30px; background-color: #1895be; border:none; font-size:15px; border-radius: 5px; cursor:pointer; color:white; font-weight:bold;" onclick="window.location.href='modify.jsp?sno=<%= vo.getSno() %>'">수정</button></td>
