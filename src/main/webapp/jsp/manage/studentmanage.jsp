@@ -134,13 +134,13 @@ if( list != null ){
 				<td><%= vo.getPhone() %></td>
 				<td><%= vo.getBirthday() %></td>
 				<td style="border-right: none;">
-				<form action="#" method="post" name="student">
+				<form action="deleteOk.jsp" method="post" name="approve">
 				    <select style="border-radius: 5px;" name="status">
 				                      <option selected value="1">승인</option>
 				                      <option value="2">삭제</option>
 				                  </select>
 				<input type="hidden" name="sno" value="<%= sno %>">
-				<button type="button" onclick="submitOk()" style="width:50px; height:25px; font-weight:bold; background-color: #1895be; border:none; color:white; font-size:12px; border-radius: 5px; cursor:pointer;">확인</button>
+				<button type="submit" onclick="submitOk()" style="width:50px; height:25px; font-weight:bold; background-color: #1895be; border:none; color:white; font-size:12px; border-radius: 5px; cursor:pointer;">확인</button>
 				</td>
 				</form>
 				  </tr>
@@ -153,7 +153,7 @@ if( list != null ){
     <script>
         function submitOk() {
             if(confirm("회원을 삭제하시겠습니까?") == true){
-                document.student.submit();
+                document.approve.submit();
             }
         }
     </script>
