@@ -94,68 +94,61 @@ if( list != null ){
             <ul><a href="approve.jsp" class="appmenu">· 승인대기</a></ul>
             <ul style="border-bottom:1px solid darkgray;"><a href="attendance.jsp" class="attmenu">· 출결관리</a></ul>
         </div>
-        <form action="approveOk.jsp" method="post" name="student">
-            <table>
-                <tr>
-                    <td colspan="6" style="text-align: left; padding-bottom: 20px; font-size: 20px; font-weight: bold; padding-bottom: 15px; background-color: white; border-right: none;">- 승인대기</td>
-                </tr>
-                <tr>
-                    <th>번호</th>
-                    <th>이름</th>
-                    <th>수업</th>
-                    <th>전화번호</th>
-                    <th>생년월일</th>
-                    <th style="border-right: none;">등록현황</th>
-                </tr>
-                <%
-                for(studentinfoVO vo : list) {
-                	String sno = vo.getSno();
-                %>
-                <tr>
-                    <td><%= sno %></td>
-                    <td><a style="text-decoration:none;"><%= vo.getSname() %></a></td>
-						<%
-						String classno	 = vo.getClassno();
-						String className = "";
-						if(classno != null || classno != "") {
-							switch(classno) {
-							    case "1" :
-							    	className = "빅데이터";
-							    	break;
-							    case "2" :
-							    	className = "웹디자인";
-								    break;
-							    case "3" :
-							    	className = "AWS";
-								    break;
-							}
-						}
-						%>
-                    <td><%= className %></td>
-                    <td><%= vo.getPhone() %></td>
-                    <td><%= vo.getBirthday() %></td>
-                    <td style="border-right: none;">
-                        <select style="border-radius: 5px;" name="status">
-                            <option selected value="0">대기</option>
-                            <option value="1">승인</option>
-                            <option value="2">삭제</option>
-                        </select>
-						<input type="hidden" name="sno" value="<%= sno %>">
-						<button type="button" onclick="submitOk()" style="width:95px; height:35px; font-weight:bold; background-color: #1895be; border:none; color:white; font-size:15px; border-radius: 5px; bottom: 190px; right:563px; cursor:pointer;">확인</button>
-                    </td>
-                </tr>
+		<table>
+			<tr>
+				<td colspan="6" style="text-align: left; padding-bottom: 20px; font-size: 20px; font-weight: bold; padding-bottom: 15px; background-color: white; border-right: none;">- 승인대기</td>
+			</tr>
+			<tr>
+				<th>번호</th>
+				<th>이름</th>
+				<th>수업</th>
+				<th>전화번호</th>
+				<th>생년월일</th>
+				<th style="border-right: none;">등록현황</th>
+			</tr>
+			<%
+			for(studentinfoVO vo : list) {
+				String sno = vo.getSno();
+			%>
+			<form action="approveOk.jsp" method="get" name="approve">
+			<tr>
+				<td><%= sno %></td>
+				<td><a style="text-decoration:none;"><%= vo.getSname() %></a></td>
 				<%
+				String classno	 = vo.getClassno();
+				String className = "";
+				if(classno != null || classno != "") {
+					switch(classno) {
+					    case "1" :
+					    	className = "빅데이터";
+					    	break;
+					    case "2" :
+					    	className = "웹디자인";
+						    break;
+					    case "3" :
+					    	className = "AWS";
+						    break;
+					}
 				}
 				%>
-            </table>
-        </form>
+				<td><%= className %></td>
+				<td><%= vo.getPhone() %></td>
+				<td><%= vo.getBirthday() %></td>
+				<td style="border-right: none;">
+					<select style="border-radius: 5px;" name="status">
+						<option selected value="0">대기</option>
+						<option value="1">승인</option>
+						<option value="2">삭제</option>
+					</select>
+					<input type="hidden" name="sno" value="<%= sno %>">
+					<input type="submit" style="width:50px; height:25px; font-weight:bold; background-color: #1895be; border:none; color:white; font-size:12px; border-radius: 5px; cursor:pointer;" value="확인">
+				</td>
+			</tr>
+			</form>
+			<%
+			}
+			%>
+		</table>
     </div>
 </body>
-<script>
-    function submitOk() {
-        if(confirm("회원을 승인하시겠습니까?") == true){
-            document.student.submit();
-        }
-    }
-</script>
 </html>
