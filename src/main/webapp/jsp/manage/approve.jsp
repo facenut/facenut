@@ -10,21 +10,20 @@ request.setCharacterEncoding("utf-8");
 String sno = request.getParameter("sno");
 String status = request.getParameter("status");
 String classno = request.getParameter("classno");
-
-classno = "";
-
-switch(classno){
-    case "1" :
-    	classno = "빅데이터";
-    	break;
-    case "2" :
-    	classno = "웹디자인";
-	    break;
-    case "3" :
-    	classno = "AWS";
-	    break;
+String className ="";
+if(classno != null || classno != "") {
+	switch(classno){
+	    case "1" :
+	    	className = "빅데이터";
+	    	break;
+	    case "2" :
+	    	className = "웹디자인";
+		    break;
+	    case "3" :
+	    	className = "AWS";
+		    break;
+	}
 }
-
 // studentDTO 객체 생성 및 데이터 읽기
 studentDTO dto = new studentDTO();
 studentinfoVO vo = dto.updateStatus(sno, status);
@@ -129,7 +128,7 @@ studentinfoVO vo = dto.updateStatus(sno, status);
                 <tr>
                     <td><%= vo.getSno() %></td>
                     <td><a style="text-decoration:none;"><%= vo.getSname() %></a></td>
-                    <td><%= vo.getClassno() %></td>
+                    <td><%= className %></td>
                     <td><%= vo.getPhone() %></td>
                     <td><%= vo.getBirthday() %></td>
                     <td style="border-right: none;">
