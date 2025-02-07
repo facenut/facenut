@@ -129,8 +129,8 @@ public class studentDTO extends DBManager {
 		return total;
 	}
 	
-	// 학생 목록 조회 : 목록을 ArrayList 변수 list 에 최신순으로 저장
-	public ArrayList<studentinfoVO> GetList(String sno, int pageno, String status) {
+	// 학생 목록 조회
+	public ArrayList<studentinfoVO> GetList(String sno, String status) {
 		
 		ArrayList<studentinfoVO> list = new ArrayList<studentinfoVO>();
 		
@@ -140,13 +140,9 @@ public class studentDTO extends DBManager {
 		this.dbConnect();
 		
 		String sql = "";
-		sql += "select no, title, wdate, userid, hit, isguest, deleted, ";
-		sql += "(select usernick from user where userid = board.userid) as usernick, ";
-		sql += "(select count(*) from reply where no = board.no and rdeleted = 0 and depth = 0) as count ";
-		sql += "from board ";
+		sql += "select sno, sname, classno, birthday, phone, status, ";
+		sql += "from studentinfoVO ";
 		sql += "where sno = '" + sno + "' and status = '" + status + "' ";
-		sql += "order by no desc ";
-		//sql += "limit " + startno + "," + studentinfoVO.pageRows;
 		
 		executeQuery(sql);
 		
