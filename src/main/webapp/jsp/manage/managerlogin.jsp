@@ -29,12 +29,13 @@
 			tr{ height:39px; text-align:center; }
 			
 			th{
-				width:70%;
-                height:70px;
-                font-size:30px ;
-                border-radius: 5px;
-				background-color:#0fa8d9; 
-                text-align: center;
+				width: 70%;
+   				height: 50px;
+   				font-size: 30px;
+    			border: 2px solid lightgray;
+    			border-radius: 10px;
+    			background-color: lightgray;
+    			text-align: center;
 			}
            
             button{
@@ -51,9 +52,9 @@
 
             }
             input{
-	            border:none;
-	            font-size:16px;
-	            font-family: 'Raleway', sans-serif;
+	  			border: none;
+    			font-size: 16px;
+    			font-family: 'Raleway', sans-serif;
             }
             input:focus{ outline:none; }   
 		</style>
@@ -64,7 +65,7 @@
 		<form action="#" name="user" method="post">
 			<table style="width:400px; padding: 85px 50px 0px 50px; margin:0px auto; background-color:white; text-align:center;">
 				<tr>
-					<th><input type="password" id= "managerpw" name="managerpw" style="width:200px; background-color: #0fa8d9;"></th>
+					<th><input type="password" id= "managerpw" name="managerpw" style="background-color:lightgray; text-align: center;"></th>
 				</tr>
 				<tr>
                     <td colspan="2" style="padding:150px 0px 30px 0px; padding-right: 1px; border-bottom:none; text-align:center; ">
