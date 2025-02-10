@@ -53,6 +53,7 @@ public class studentDTO extends DBManager {
 		sql += "classno = '" + classno + "' ";
 		sql += "where sno = '" + sno + "' ";
 		this.execute(sql);
+		System.out.println(sql);
 		this.dbDisconnect();
 		
 		return true;

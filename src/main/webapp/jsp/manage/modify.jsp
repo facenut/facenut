@@ -73,12 +73,12 @@ studentinfoVO vo = dto.read(sno);
 				<table style="width:500px; padding: 50px 50px 0px 50px; margin:0px auto; background-color:white; text-align:center;">
 					<tr>
 						<th>이름 :</th>
-						<td><input type="text" id="userName" name="username" style="width:200px;" placeholder="<%= vo.getSname() %>"></td>
+						<td><input type="text" id="userName" name="username" style="width:200px;" value="<%= vo.getSname() %>"></td>
 					</tr>
 					<tr>
 						<th>전화번호 :</th>
 						<td>
-							<input type="text" id="userphone" name="userphone" style="width:200px; padding-top:10px;" placeholder="<%= vo.getPhone() %>">
+							<input type="text" id="userphone" name="userphone" style="width:200px; padding-top:10px;" value="<%= vo.getPhone() %>">
 						</td>
 					</tr>
 					<tr style="height:45px;">
@@ -100,11 +100,11 @@ studentinfoVO vo = dto.read(sno);
 							}
 						}
 						%>
-						<td><input type="text" id="classname" name="classname" style="width:200px; padding-top:10px;" placeholder="<%= className %>"></td>
+						<td><input type="text" id="classname" name="classname" style="width:200px; padding-top:10px;" value="<%= className %>"></td>
 					</tr>
 					<tr>
 						<th>생년월일 :</th>
-						<td><input type="text" id= "userbirth" name="userbirth" style="width:200px;" placeholder="<%= vo.getBirthday() %>"></td>
+						<td><input type="text" id= "userbirth" name="userbirth" style="width:200px;" value="<%= vo.getBirthday() %>"></td>
 					</tr>
 					<tr>
 	                    <td colspan="2" style="padding:65px 0px; padding-right: 1px; border-bottom:none; text-align:center; ">
