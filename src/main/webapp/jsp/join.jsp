@@ -58,8 +58,13 @@
             }
             input:focus{ outline:none; }   
 		</style>
-		<script src="../../js/jquery-3.7.1.js"></script>
+		<script src="../js/jquery-3.7.1.js"></script>
 		<script>
+		window.onload = function()
+		{
+			$("#username").focus();
+		}
+		
 		$(document).ready(function() {
 		    $("#joinOk").click(function() {
 		        Dosubmit();
@@ -68,7 +73,7 @@
 		    $("#joinCancel").click(function() {
 				if(confirm("회원 가입을 취소하시겠습니까?") == true)
 				{
-					document.location = "../../html/face/facerecog.html";
+					document.location = "../html/face/facerecog.html";
 				}
 			});
 		});
@@ -85,6 +90,11 @@
 				$("#userphone").focus();
 				return;
 			}
+		 	// 라디오 버튼 선택 여부 확인
+	        if ($("input[name='classname']:checked").length == 0) {
+	            alert("강좌를 선택하세요.");
+	            return;
+	        }
 		    if( $("#userbirth").val() == "" )
 			{
 				alert("생년월일을 입력하세요.");
@@ -96,6 +106,8 @@
 				document.forms.student.submit();
 			}	
 		};
+		
+		
 		</script>
 		<section>
         <div class="container">
@@ -110,7 +122,7 @@
 				<tr>
 					<th>전화번호 :</th>
 					<td>
-						<input type="text" id="userphone" name="userphone" style="width:200px; padding-top:10px;">
+						<input type="text" id="userphone" name="userphone" style="width:200px; padding-top:10px;" maxlength="11"; placeholder="01012345678">
 					</td>
 				</tr>
 				<tr style="height:45px;">
@@ -123,7 +135,7 @@
 				</tr>
 				<tr>
 					<th>생년월일 :</th>
-					<td><input type="text" id= "userbirth" name="userbirth" style="width:200px; maxlength:'8';" placeholder="YYYYMMDD"></td>
+					<td><input type="text" id= "userbirth" name="userbirth" style="width:200px;" maxlength="8"; placeholder="YYYYMMDD"></td>
 				</tr>
 				<tr>
                     <td colspan="2" style="padding:65px 0px; padding-right: 1px; border-bottom:none; text-align:center; ">
@@ -134,7 +146,7 @@
 			</table>
 		</form>
 		<div style="width: 150px; border-right: none; padding-left: 181px;">
-            <img src="../../img/logo.png" style="width: 120px;">
+            <img src="../img/logo.png" style="width: 120px;">
         </div>
 		</section>
 	</body>
