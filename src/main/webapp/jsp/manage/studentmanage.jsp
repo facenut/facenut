@@ -113,7 +113,7 @@ if( list != null ){
 				<form action="deleteOk.jsp" method="post" name="approve">
 				<tr>
 				    <td><%= sno %></td>
-				<td><a style="text-decoration:none;"><%= vo.getSname() %></a></td>
+				<td><a href="studentinfo.jsp?sno=<%= vo.getSno() %>" style="text-decoration:none;"><%= vo.getSname() %></a></td>
 				<%
 				String classno	 = vo.getClassno();
 				String className = "";

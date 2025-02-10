@@ -223,7 +223,30 @@ public class studentDTO extends DBManager {
 				return false;
 			}
 		 }
-		 
-	
+	 
+			/*
+			 * public ArrayList<attendanceVO> GetList() {
+			 * 
+			 * ArrayList<attendanceVO> list = new ArrayList<attendanceVO>();
+			 * 
+			 * //int startno = (pageno - 1) * 10;
+			 * 
+			 * this.driverLoad(); this.dbConnect();
+			 * 
+			 * String sql = ""; sql += "select idx, checktime, attendate, sno, classno ";
+			 * sql += "from studentinfo ";
+			 * 
+			 * System.out.println(sql);
+			 * 
+			 * executeQuery(sql);
+			 * 
+			 * while(next()) { attendanceVO vo = new attendanceVO(); vo.setIdx
+			 * (getString("idx")); vo.setChecktime (getString("checktime")); vo.setAttendate
+			 * (getString("attendate")); vo.setSno (getString("sno")); vo.setClassno
+			 * (getString("classno")); list.add(vo); }
+			 * 
+			 * dbDisconnect(); return list;
+			 * 
+			 * }
+			 */
 }
-
