@@ -165,6 +165,7 @@ public class studentDTO extends DBManager {
 		return list;
 	}
 	
+	// 일별 출석 현황 조회
 	public ArrayList<attendanceVO> GetAttendList(String date) {
 		
 		ArrayList<attendanceVO> list = new ArrayList<attendanceVO>();
@@ -172,26 +173,76 @@ public class studentDTO extends DBManager {
 		this.driverLoad();
 		this.dbConnect();
 		
-		String sql = "";
+	/*	String sql = "";
 		sql += "SELECT a.sno, s.sname, a.classno, MIN(a.checktime) as checkin, MAX(a.checktime) as checkout, COUNT(a.checktime) as count ";
 		sql += "FROM attendance a ";
 		sql += "JOIN studentinfo s ON a.sno = s.sno ";
 		sql += "WHERE DATE(a.checktime) = '" + date + "' ";
 		sql += "GROUP BY a.sno, s.sname, a.classno ";
-		sql += "ORDER BY checkin ASC";
+		sql += "ORDER BY checkin ASC";	*/
+		
+		String sql = "";
+		sql += "SELECT a.sno, s.sname, a.classno, a.checktime, a.event ";
+		sql += "FROM attendance a ";
+		sql += "JOIN studentinfo s ON a.sno = s.sno ";
+		sql += "WHERE DATE(a.checktime) = '" + date + "' ";
+		sql += "ORDER BY sno, checktime ASC";
 		
 		System.out.println(sql);
 		
 		executeQuery(sql);
-		
+		/*
+		//ArrayList<String> events = new ArrayList<>();
+		attendanceVO vo = new attendanceVO(); 
+				if(next()) {
+			System.out.println("조회된 데이터가 있음");
+			while(true) {
+				if(!getString("sno").equals(vo.getSno())) {
+					System.out.println("가져온 데이터가 기존 데이터와 다름");
+					if(vo.getSno() != null) {
+						System.out.println("기존 데이터가 있음");
+						vo.setEvents(events);
+						System.out.println("리스트에 vo를 넣음");
+						list.add(vo);
+					}else {
+						System.out.println("기존 데이터가 없음");
+						// 새로운 vo를 만들어 정보를 저장
+						vo = new attendanceVO();
+						events = new ArrayList<>();
+						vo.setSno		(getString("sno"));
+						vo.setSname		(getString("sname"));
+						vo.setClassno	(getString("classno"));
+						vo.setCheckin	(getString("checktime"));
+						vo.setCheckin	(getString("checktime"));
+					}
+				}else
+				{	// 같으면 추가 정보만 넣음
+					System.out.println("가져온 데이터가 기존 vo와 이름이 같음");
+					vo.setCheckout	(getString("checktime"));
+				}
+				System.out.println(vo.getSname() + " : " + getString("event"));
+				events.add(getString("event"));
+				
+				if(!next()) {
+					// 다음 데이터가 없음
+					vo.setEvents(events);
+					list.add(vo);
+					break;
+				}
+			}
+		}
+		 
+		*/
 		while(next()) {
 			attendanceVO vo = new attendanceVO();
 			vo.setSno		(getString("sno"));
 			vo.setSname		(getString("sname"));
 			vo.setClassno	(getString("classno"));
-			vo.setCheckin	(getString("checkin"));
-			vo.setCheckout	(getString("checkout"));
-			vo.setCount		(getString("count"));
+			vo.setCheckin	(getString("checktime"));
+			vo.setCheckout	(getString("checktime"));
+			vo.setChecktime	(getString("checktime"));
+			vo.setEvent		(getString("event"));
+			System.out.println(getString("event"));
 			list.add(vo);
 		}
 		

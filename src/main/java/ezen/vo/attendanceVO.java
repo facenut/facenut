@@ -1,5 +1,7 @@
 package ezen.vo;
 
+import java.util.ArrayList;
+
 //클래스명 : attendanceVO
 //작성자명 : 천은정
 //작성일자 : 2025.02.04
@@ -13,6 +15,8 @@ public class attendanceVO {
 	private String sname;		//학생이름
 	private String classno ;	//강좌번호
 	private String count;		//체크횟수
+	private String event;
+	private ArrayList<String> events;
 	
 	//setter
 	public void setIdx 			(String idx) 	  	  {	this.idx = idx;				}
@@ -23,14 +27,35 @@ public class attendanceVO {
 	public void setSname		(String sname) 		  {	this.sname = sname;			}
 	public void setClassno 		(String classno) 	  {	this.classno = classno;		}
 	public void setCount 		(String count) 		  {	this.count = count;			}
+	public void setEvent 		(String event) 		  {	this.event = event;			}
 	
 	//getter
 	public String getIdx() 			{	return idx;			}
 	public String getChecktime() 	{	return checktime;	}
-	public String getCheckin()		{	return checkin;	}
+	public String getCheckin()		{	return checkin;		}
 	public String getCheckout() 	{	return checkout;	}
 	public String getSno() 			{	return sno;			}
 	public String getSname() 		{	return sname;		}
 	public String getClassno() 		{	return classno;		}
 	public String getCount() 		{	return count;		}
+	public String getEvent() 		{	return event;		}
+	
+	
+	public ArrayList<String> getEvents() {
+		return events;
+	}
+	public void setEvents(ArrayList<String> events) {
+		this.events = events;
+	}
+	
+	@Override
+	public String toString() {
+		return "attendanceVO [idx=" + idx + ", checktime=" + checktime + ", checkin=" + checkin + ", checkout="
+				+ checkout + ", sno=" + sno + ", sname=" + sname + ", classno=" + classno + ", count=" + count
+				+ ", event=" + event + ", events=" + events + ", getIdx()=" + getIdx() + ", getChecktime()="
+				+ getChecktime() + ", getCheckin()=" + getCheckin() + ", getCheckout()=" + getCheckout() + ", getSno()="
+				+ getSno() + ", getSname()=" + getSname() + ", getClassno()=" + getClassno() + ", getCount()="
+				+ getCount() + ", getEvent()=" + getEvent() + ", getEvents()=" + getEvents() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
 }
