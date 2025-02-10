@@ -99,7 +99,24 @@ studentinfoVO vo = dto.read(sno);
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;">강좌</th>
-                <td style="text-align: center;"><%= vo.getClassno() %></td>
+                <%
+				String classno	 = vo.getClassno();
+				String className = "";
+				if(classno != null || classno != "") {
+					switch(classno) {
+					    case "1" :
+					    	className = "빅데이터";
+					    	break;
+					    case "2" :
+					    	className = "웹디자인";
+						    break;
+					    case "3" :
+					    	className = "AWS";
+						    break;
+					}
+				}
+				%>
+                <td style="text-align: center;"><%= className %></td>
             </tr>
             <tr>
                 <th style="text-align: center; font-size: 17px;">전화번호</th>
