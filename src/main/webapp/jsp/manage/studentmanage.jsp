@@ -50,7 +50,7 @@ if( list != null ){
                 background-color: lightgray;
             }
             th{ 
-                background-color: #379fc5e7; 
+                background-color: #9FC2CE;
                 height: 45px; 
                 font-size: 16px;
                 border-right: 1px solid darkgray; 

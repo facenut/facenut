@@ -45,7 +45,7 @@ studentinfoVO vo = dto.read(sno);
             border-right: none;
         }
         th{ 
-            background-color: #379fc5e7;
+            background-color: #9FC2CE;
             border-right: 1px solid darkgray; 
             border-bottom: 1px solid darkgray;
             font-size: 20px;
@@ -155,6 +155,5 @@ studentinfoVO vo = dto.read(sno);
                 <td style="border-right: none;">18:00</td>
             </tr>
         </table>
-    </div>
 </body>
 </html>

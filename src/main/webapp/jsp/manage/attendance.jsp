@@ -115,7 +115,7 @@ if( list != null ){
                 border-collapse: collapse;
             }
             tr{ height: 32px; background-color:  #fcfcfc;}
-            th{ background-color: #379fc5e7; 
+            th{ background-color: #9FC2CE;
                 height: 33px; 
                 font-size: 16px;
                 border-bottom: 1px solid darkgray;
@@ -163,7 +163,7 @@ if( list != null ){
                 <img src="../../img/logo.png" style="width: 150px;">
             </div>
             <div class="managermenu" style="width:160px; border-right:none;  margin-left:220px; padding-top: 39px;">
-                <div style="background-color: #379fc5e7; width:160px; text-align:center; font-size:20px; color:#fcfcfc; border:1px solid darkgray; font-weight:bold; padding:5px 0px;">관리자<br>
+                <div style="background-color:   #379fc5e7; width:160px; text-align:center; font-size:20px; color:#fcfcfc; border:1px solid darkgray; font-weight:bold; padding:5px 0px;">관리자<br>
                     <a href="managerlogin.jsp" style="color: #fcfcfc;">(로그아웃)</a></div>
                 <ul><a href="studentmanage.jsp" class="menu">· 학생관리</a></ul>
                 <ul><a href="approve.jsp" class="menu">· 승인대기</a></ul>
@@ -173,7 +173,7 @@ if( list != null ){
                 <tr>
                     <td colspan="6" style="text-align: left; padding-bottom: 20px; font-size: 20px; font-weight: bold; border: none; background-color: white;">- 출결관리</td>
                 </tr>
-                <tr style="height:40px; background-color: #379fc5e7; border-bottom:1px solid black;">
+                <tr style="height:40px; background-color: #9FC2CE; border-bottom:1px solid black;">
                     <td colspan="3" style="border-bottom: 1px solid darkgray; border-top: 1px solid darkgray; border-right: none; border-left: none; text-align:left; font-weight:bold; padding-left:30px; ">
 						날짜 :  <select id="select_year" onchange="javascript:lastday();" style="border-radius: 5px;"></select>년
 								<select id="select_month" onchange="javascript:lastday();" style="border-radius: 5px;"></select>월
@@ -193,7 +193,7 @@ if( list != null ){
                     <th rowspan="2" style= "border-right: 2px solid darkgray; border-right: none;">출결 상태</th>
                 </tr>
                 <tr style="border-bottom: 2px solid darkgray;" id="add_list_after_here">
-                    <td style="border-bottom: none; background-color: #379fc5e7;">
+                    <td style="border-bottom: none; background-color:#9FC2CE;">
                         <div class="attendancebox" style="display: flex; justify-content:center; border-right: none;">
                             <div style="width:30%; display: inline-block; text-align:center; font-weight:bold; padding: 7px 0px; color: white; ">입실</div>
                             <div class="exit" style="width:30%; display: inline-block; text-align:center; font-weight:bold; padding: 7px 0px; color: white;">퇴실</div>  
