@@ -41,13 +41,4 @@ sno int comment '학생번호',
 foreign key(sno) references studentinfo(sno)
 );
 
-create table face
-(
-face_idx int auto_increment primary key comment '얼굴 인덱스',
-sno int comment '학생번호',
-idx int comment '관리번호',
-pname varchar(255) comment '파일이름',
-lname varchar(255) comment '원본이름',
-foreign key(sno) references studentinfo(sno),
-foreign key(idx) references attendance(idx)
-);
+[

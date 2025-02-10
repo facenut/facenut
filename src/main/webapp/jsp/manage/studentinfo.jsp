@@ -33,7 +33,7 @@ studentinfoVO vo = dto.read(sno);
         table{ 
             width:850px;
             position: absolute;
-            top: 0px;
+            top: 110px;
             right: 170px;
             text-align:center;
             border-collapse: collapse;
@@ -134,7 +134,7 @@ studentinfoVO vo = dto.read(sno);
 	            </tr>
 	        </table>
 	    </form>
-        <table style="top: 225px;">
+        <table style="top: 380px;">
             <tr style="border: none;">
                 <td colspan="6" style="text-align: left; font-size: 20px; font-weight: bold; border: none;">- 출결현황</td>
             </tr>
@@ -155,9 +155,6 @@ studentinfoVO vo = dto.read(sno);
                 <td style="border-right: none;">18:00</td>
             </tr>
         </table>
-        <div style="width:850px; height:200px; position: absolute; bottom: 20px; right: 170px; background-color:#379fc5e7; text-align:center;">
-            출결현황 막대그래프 사진 넣는 곳 
-        </div>
     </div>
 </body>
 </html>

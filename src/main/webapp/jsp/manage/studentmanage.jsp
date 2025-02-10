@@ -150,6 +150,7 @@ if( list != null ){
 				</table>
         </div>
     </body>
+    <script src="../../js/jquery-3.7.1.js"></script>
     <script>
         function submitOk() {
             if(confirm("회원을 삭제하시겠습니까?") == true){
