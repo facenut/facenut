@@ -26,7 +26,6 @@ for(attendanceVO vo : list) {
 	}
 	checkin	= vo.getCheckin();
 	checkout = vo.getCheckout();
-
 %>
 <tr class="ajax_added">
 	<td><%= index %></td>
