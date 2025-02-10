@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page import="ezen.dao.*" %>
 <%@ page import="ezen.dto.*" %>
 <%@ page import="ezen.vo.*" %>
@@ -8,14 +7,8 @@
 //한글 인코딩 처리
 request.setCharacterEncoding("utf-8");
 
-studentDTO dto = new studentDTO();
-studentinfoVO vo = new studentinfoVO();
-attendanceVO VO = new attendanceVO(); 
-String status = "1";
-ArrayList<studentinfoVO> list = dto.GetList(status);
-if( list != null ){
-	System.out.println(list.size());
-}
+// 폼에서 전달된 sno와 status 파라미터 받기
+String sno = request.getParameter("sno");
 %>
 
 
@@ -163,7 +156,7 @@ if( list != null ){
                 <img src="../../img/logo.png" style="width: 150px;">
             </div>
             <div class="managermenu" style="width:160px; border-right:none;  margin-left:220px; padding-top: 39px;">
-                <div style="background-color:   #379fc5e7; width:160px; text-align:center; font-size:20px; color:#fcfcfc; border:1px solid darkgray; font-weight:bold; padding:5px 0px;">관리자<br>
+                <div style="background-color:  #9FC2CE; width:160px; text-align:center; font-size:20px; color:#fcfcfc; border:1px solid darkgray; font-weight:bold; padding:5px 0px;">관리자<br>
                     <a href="managerlogin.jsp" style="color: #fcfcfc;">(로그아웃)</a></div>
                 <ul><a href="studentmanage.jsp" class="menu">· 학생관리</a></ul>
                 <ul><a href="approve.jsp" class="menu">· 승인대기</a></ul>
@@ -195,44 +188,10 @@ if( list != null ){
                 <tr style="border-bottom: 2px solid darkgray;" id="add_list_after_here">
                     <td style="border-bottom: none; background-color:#9FC2CE;">
                         <div class="attendancebox" style="display: flex; justify-content:center; border-right: none;">
+                            <div style="width:30%; display: inline-block; text-align:center; font-weight:bold; padding: 7px 0px; color: white; ">상태</div>
                             <div style="width:30%; display: inline-block; text-align:center; font-weight:bold; padding: 7px 0px; color: white; ">입실</div>
                             <div class="exit" style="width:30%; display: inline-block; text-align:center; font-weight:bold; padding: 7px 0px; color: white;">퇴실</div>  
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><%= VO.getIdx() %></td>
-                    <td ><a href="studentinfo.jsp?sno=<%= vo.getSno() %>" ><%= vo.getSname() %></a></td>
-                    <%
-					String classno	 = vo.getClassno();
-					String className = "";
-					if(classno != null || classno != "") {
-						switch(classno) {
-						    case "1" :
-						    	className = "빅데이터";
-						    	break;
-						    case "2" :
-						    	className = "웹디자인";
-							    break;
-						    case "3" :
-						    	className = "AWS";
-							    break;
-						}
-					}
-					%>
-					<td><%= className %></td>
-                    <td>25.01.20</td>
-                    <td>
-                        <div class="attendancebox" style="display: flex; justify-content:center;">
-                            <div style="width:30%; display: inline-block; text-align:center;"><%= VO.getChecktime() %></div>
-                            <div class="exit" style="width:30%; display: inline-block; text-align:center;"><%= VO.getChecktime() %></div>  
-                        </div>
-                    </td>
-                    <td style="border-right: none;" >
-                        <span>지각</span>
-                       <!--  <span>지0</span>
-                        <span>외0</span>
-                        <span>결0</span> -->
                     </td>
                 </tr>
             </table>
