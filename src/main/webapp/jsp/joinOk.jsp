@@ -24,14 +24,16 @@ if( dto.join(vo) == true )
 	// 가입 성공시
 	%>
 	<script>
-		alert('회원으로 가입되셨습니다.'); location.href='facerecog.jsp';
+		alert('회원으로 가입되셨습니다.'); 
+		location.href='../html/face/facerecog.html';
 	</script>
 	<%
 } else {
 	// 가입 실패시
 	%>
 	<script>
-		alert('오류가 발생하였습니다. 다시 시도해주세요.'); location.href='facerecog.jsp';
+		alert('오류가 발생하였습니다. 다시 시도해주세요.'); 
+		location.href='../html/face/facerecog.html';
 	</script>
 	<%
 }

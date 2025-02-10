@@ -216,7 +216,7 @@ public class studentDTO extends DBManager {
 		 
 		 this.dbDisconnect();
 		 
-		 if(result == 1) {
+		 if( result == 1 ) {
 				this.dbDisconnect();
 				return true;	
 			}else {
