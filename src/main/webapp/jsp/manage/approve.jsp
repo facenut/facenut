@@ -49,7 +49,7 @@ if( list != null ){
             background-color: lightgray;
         }
         th {
-            background-color: #379fc5e7;
+            background-color: #9FC2CE;
             height: 45px;
             font-size: 16px;
             border-right: 1px solid darkgray;
@@ -80,6 +80,7 @@ if( list != null ){
             border: 1px solid darkgray;
             border-top: none;
         }
+        
     </style>
 </head>
 <body>
@@ -141,7 +142,7 @@ if( list != null ){
 						<option value="2">삭제</option>
 					</select>
 					<input type="hidden" name="sno" value="<%= sno %>">
-					<input type="submit" style="width:50px; height:25px; font-weight:bold; background-color: #1895be; border:none; color:white; font-size:12px; border-radius: 5px; cursor:pointer;" value="확인">
+					<input type="submit" style="width:50px; height:25px; font-weight:bold; background-color: #379fc5e7; border:none; color:white; font-size:12px; border-radius: 5px; cursor:pointer;" value="확인">
 				</td>
 			</tr>
 			</form>
