@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 import ezen.dao.DBManager;
+import ezen.vo.attendanceVO;
 import ezen.vo.studentinfoVO;
 
 //클래스명 : studentDTO
@@ -156,6 +157,40 @@ public class studentDTO extends DBManager {
 			vo.setBirthday	(getString("birthday"));
 			vo.setPhone		(getString("phone"));
 			vo.setStatus	(getString("status"));
+			list.add(vo);
+		}
+		
+		dbDisconnect();
+		return list;
+	}
+	
+	public ArrayList<attendanceVO> GetAttendList(String date) {
+		
+		ArrayList<attendanceVO> list = new ArrayList<attendanceVO>();
+		
+		this.driverLoad();
+		this.dbConnect();
+		
+		String sql = "";
+		sql += "SELECT a.sno, s.sname, a.classno, MIN(a.checktime) as checkin, MAX(a.checktime) as checkout, COUNT(a.checktime) as count ";
+		sql += "FROM attendance a ";
+		sql += "JOIN studentinfo s ON a.sno = s.sno ";
+		sql += "WHERE DATE(a.checktime) = '" + date + "' ";
+		sql += "GROUP BY a.sno, s.sname, a.classno ";
+		sql += "ORDER BY checkin ASC";
+		
+		System.out.println(sql);
+		
+		executeQuery(sql);
+		
+		while(next()) {
+			attendanceVO vo = new attendanceVO();
+			vo.setSno		(getString("sno"));
+			vo.setSname		(getString("sname"));
+			vo.setClassno	(getString("classno"));
+			vo.setCheckin	(getString("checkin"));
+			vo.setCheckout	(getString("checkout"));
+			vo.setCount		(getString("count"));
 			list.add(vo);
 		}
 		
