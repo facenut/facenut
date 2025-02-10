@@ -156,7 +156,7 @@ String sno = request.getParameter("sno");
                 <img src="../../img/logo.png" style="width: 150px;">
             </div>
             <div class="managermenu" style="width:160px; border-right:none;  margin-left:220px; padding-top: 39px;">
-                <div style="background-color:  #9FC2CE; width:160px; text-align:center; font-size:20px; color:#fcfcfc; border:1px solid darkgray; font-weight:bold; padding:5px 0px;">관리자<br>
+                <div style="background-color:  #379fc5e7; width:160px; text-align:center; font-size:20px; color:#fcfcfc; border:1px solid darkgray; font-weight:bold; padding:5px 0px;">관리자<br>
                     <a href="managerlogin.jsp" style="color: #fcfcfc;">(로그아웃)</a></div>
                 <ul><a href="studentmanage.jsp" class="menu">· 학생관리</a></ul>
                 <ul><a href="approve.jsp" class="menu">· 승인대기</a></ul>
