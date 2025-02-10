@@ -134,7 +134,7 @@
 			</table>
 		</form>
 		<div style="width: 150px; border-right: none; padding-left: 181px;">
-            <img src="../../img/logo.png" style="width: 120px;">
+            <img src="../img/logo.png" style="width: 120px;">
         </div>
 		</section>
 	</body>
