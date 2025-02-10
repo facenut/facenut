@@ -45,7 +45,7 @@ studentinfoVO vo = dto.read(sno);
             border-right: none;
         }
         th{ 
-            background-color: #379fc5e7;
+            background-color: #9FC2CE;
             border-right: 1px solid darkgray; 
             border-bottom: 1px solid darkgray;
             font-size: 20px;
@@ -155,7 +155,7 @@ studentinfoVO vo = dto.read(sno);
                 <td style="border-right: none;">18:00</td>
             </tr>
         </table>
-        <div style="width:850px; height:200px; position: absolute; bottom: 20px; right: 170px; background-color:#379fc5e7; text-align:center;">
+        <div style="width:850px; height:200px; position: absolute; bottom: 20px; right: 170px; background-color:#9FC2CE; text-align:center;">
             출결현황 막대그래프 사진 넣는 곳 
         </div>
     </div>
