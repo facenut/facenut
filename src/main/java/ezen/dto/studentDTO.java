@@ -47,7 +47,7 @@ public class studentDTO extends DBManager {
 		this.dbConnect();
 		
 		String sql = "";
-		sql += "update user ";
+		sql += "update studentinfo ";
 		sql += "set sname = '" + sname + "', ";
 		sql += "phone = '" + phone + "', ";
 		sql += "classno = '" + classno + "' ";

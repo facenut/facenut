@@ -10,7 +10,7 @@ request.setCharacterEncoding("utf-8");
 String sno  = request.getParameter("sno");
 String sname  = request.getParameter("username");
 String phone = request.getParameter("userphone");
-String classno = request.getParameter("classno");
+String classno = request.getParameter("classname");
 
 studentinfoVO vo = new studentinfoVO();
 vo.setSname(sname);

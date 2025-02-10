@@ -68,7 +68,7 @@ studentinfoVO vo = dto.read(sno);
 		<section>
         <div class="container">
 			<div class="modify">회원수정</div>
-			<form action="modifyok.jsp" name="user" id="user" method="post">
+			<form action="modifyok.jsp" name="user" id="user" method="get">
 			<input type="hidden" name="sno" value="<%= sno %>">
 				<table style="width:500px; padding: 50px 50px 0px 50px; margin:0px auto; background-color:white; text-align:center;">
 					<tr>
@@ -83,24 +83,19 @@ studentinfoVO vo = dto.read(sno);
 					</tr>
 					<tr style="height:45px;">
 						<th>강좌명 :</th>
-						<%
-						String classno	 = vo.getClassno();
-						String className = "";
-						if(classno != null || classno != "") {
-							switch(classno) {
-							    case "1" :
-							    	className = "빅데이터";
-							    	break;
-							    case "2" :
-							    	className = "웹디자인";
-								    break;
-							    case "3" :
-							    	className = "AWS";
-								    break;
-							}
-						}
-						%>
-						<td><input type="text" id="classname" name="classname" style="width:200px; padding-top:10px;" value="<%= className %>"></td>
+						<td>
+							<input type="radio" class="classname" name="classname" value="1" 
+						    <% if ("1".equals(vo.getClassno())) { %> checked <% } %> 
+						    style="padding-top:30px; margin-right:0px;">빅데이터
+							
+							<input type="radio" class="classname" name="classname" value="2" 
+						    <% if ("2".equals(vo.getClassno())) { %> checked <% } %> 
+						    style="padding-top:30px; margin-right:0px;">웹디자인
+							
+							<input type="radio" class="classname" name="classname" value="3" 
+						    <% if ("3".equals(vo.getClassno())) { %> checked <% } %> 
+						    style="padding-top:30px; margin-right:0px;">AWS
+						</td>
 					</tr>
 					<tr>
 						<th>생년월일 :</th>
