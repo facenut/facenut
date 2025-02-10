@@ -25,6 +25,75 @@ if( list != null ){
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>안면인식 기반 자동출결 시스템</title>
+        <script src="../../js/jquery-3.7.1.js"></script>
+        <script type="text/javascript">
+	        window.onload = function() {
+		        var start_year="2024";// 시작할 년도
+		        var today = new Date();
+		        var today_year= today.getFullYear();
+		        var index=0;
+		        for(var y=start_year; y<=today_year; y++){ //start_year ~ 현재 년도
+		        	document.getElementById('select_year').options[index] = new Option(y, y);
+		        	index++;
+		        }
+		        index=0;
+		        for(var m=1; m<=12; m++){
+		        	document.getElementById('select_month').options[index] = new Option(m, m);
+		        	index++;
+		        }
+		
+		        lastday();
+		        let request_date = ""
+		        const select_day = document.getElementById("select_day");
+		        select_day.addEventListener("change", function(e) {
+		            selected_day = "< "+$("#select_year").val()+"년 "+$("#select_month").val()+"월 "+$("#select_day").val()+"일 출석현황 >"
+		            request_date = $("#select_year").val()+"-"+$("#select_month").val()+"-"+$("#select_day").val()
+		            $("#selected_day").html(selected_day);
+		            
+		            $.ajax({
+		        		url : 'getattend.jsp?day=' + request_date,
+		        		type : 'get',
+		        		success : function(result) {
+		        			if($(".ajax_added")) $(".ajax_added").remove(); 
+		        			$("#add_list_after_here").after(result)
+		        		}
+		        	});
+		        });
+		        $("#CheckBtn").click(function() {
+		        	request_date = $("#select_year").val()+"-"+$("#select_month").val()+"-"+$("#select_day").val()
+		            $("#selected_day").html(selected_day);
+		            
+		            $.ajax({
+		        		url : 'getattend.jsp?day=' + request_date,
+		        		type : 'get',
+		        		success : function(result) {
+		        			if($(".ajax_added")) $(".ajax_added").remove(); 
+		        			$("#add_list_after_here").after(result)
+		        		}
+		        	});
+				});
+	        }
+
+	        function lastday(){ //년과 월에 따라 마지막 일 구하기 
+	        	var Year=document.getElementById('select_year').value;
+	        	var Month=document.getElementById('select_month').value;
+	        	var day=new Date(new Date(Year,Month,1)-86400000).getDate();
+	            /* = new Date(new Date(Year,Month,0)).getDate(); */
+	            
+	        	var dayindex_len=document.getElementById('select_day').length;
+	        	if(day>dayindex_len){
+	        		for(var i=(dayindex_len+1); i<=day; i++){
+	        			document.getElementById('select_day').options[i-1] = new Option(i, i);
+	        		}
+	        	}
+	        	else if(day<dayindex_len){
+	        		for(var i=dayindex_len; i>=day; i--){
+	        			document.getElementById('select_day').options[i]=null;
+	        		}
+	        	}
+	        }
+	        
+        </script>
         <style>
             .container {
                 background-color: white;
@@ -105,26 +174,14 @@ if( list != null ){
                     <td colspan="6" style="text-align: left; padding-bottom: 20px; font-size: 20px; font-weight: bold; border: none; background-color: white;">- 출결관리</td>
                 </tr>
                 <tr style="height:40px; background-color: #379fc5e7; border-bottom:1px solid black;">
-                    <td colspan="2" style="border-bottom: 1px solid darkgray; border-top: 1px solid darkgray; border-right: none; border-left: none; text-align:left; font-weight:bold; padding-left:30px; ">
-                        날짜
-                        <select style="border-radius: 5px;">
-                            <option>25.01.20</option>
-                            <option>25.01.19</option>
-                            <option>25.01.18</option>
-                            <option>25.01.17</option>
-                            <option>25.01.16</option>
-                        </select>
+                    <td colspan="3" style="border-bottom: 1px solid darkgray; border-top: 1px solid darkgray; border-right: none; border-left: none; text-align:left; font-weight:bold; padding-left:30px; ">
+						날짜 :  <select id="select_year" onchange="javascript:lastday();" style="border-radius: 5px;"></select>년
+								<select id="select_month" onchange="javascript:lastday();" style="border-radius: 5px;"></select>월
+								<select id="select_day" style="border-radius: 5px;"></select>일
+								<button class="button" type="button" id="CheckBtn">조회</button>
                     </td>
-                    <td colspan="4" style="border-bottom: 1px solid darkgray; border-top: 1px solid darkgray; border-left: none; border-right: none;text-align:left; font-weight:bold; padding-left: 15px;">
-                        학생
-                        <select style="border-radius: 5px;">
-                            <option>전체</option>
-                            <option>홍길동</option>
-                            <option>홍길동</option>
-                            <option>홍길동</option>
-                            <option>홍길동</option>
-                            <option>홍길동</option>
-                        </select>
+                    <td colspan="3" style="border-bottom: 1px solid darkgray; border-top: 1px solid darkgray; border-left: none; border-right: none;text-align:left; font-weight:bold; padding-left: 15px;">
+                        <div id="selected_day" style="text-size:20px;"></div>
                     </td>
                 </tr>
                 <tr>
@@ -135,7 +192,7 @@ if( list != null ){
                     <th>출결</th>
                     <th rowspan="2" style= "border-right: 2px solid darkgray; border-right: none;">출결 상태</th>
                 </tr>
-                <tr style="border-bottom: 2px solid darkgray;">
+                <tr style="border-bottom: 2px solid darkgray;" id="add_list_after_here">
                     <td style="border-bottom: none; background-color: #379fc5e7;">
                         <div class="attendancebox" style="display: flex; justify-content:center; border-right: none;">
                             <div style="width:30%; display: inline-block; text-align:center; font-weight:bold; padding: 7px 0px; color: white; ">입실</div>
