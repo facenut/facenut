@@ -47,12 +47,13 @@ public class studentDTO extends DBManager {
 		this.dbConnect();
 		
 		String sql = "";
-		sql += "update user ";
-		sql += "set sname = '" + sname + "' ";
-		sql += "set phone = '" + phone + "' ";
-		sql += "set classno = '" + classno + "' ";
+		sql += "update studentinfo ";
+		sql += "set sname = '" + sname + "', ";
+		sql += "phone = '" + phone + "', ";
+		sql += "classno = '" + classno + "' ";
 		sql += "where sno = '" + sno + "' ";
 		this.execute(sql);
+		System.out.println(sql);
 		this.dbDisconnect();
 		
 		return true;
@@ -215,7 +216,7 @@ public class studentDTO extends DBManager {
 		 
 		 this.dbDisconnect();
 		 
-		 if(result == 1) {
+		 if( result == 1 ) {
 				this.dbDisconnect();
 				return true;	
 			}else {
