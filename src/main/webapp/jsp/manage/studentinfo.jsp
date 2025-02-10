@@ -88,48 +88,52 @@ studentinfoVO vo = dto.read(sno);
             <ul><a href="approve.jsp" class="menu">· 승인대기</a></ul>
             <ul style="border-bottom:1px solid darkgray;"><a href="attendance.jsp" class="menu">· 출결관리</a></ul>
         </div>
-        <table>
-            <tr style="border: none;">
-                <td colspan="6" style="text-align: left; font-size: 20px; font-weight: bold; background-color: white; border-right:none;">- 학생정보</td>
-                
-            </tr>
-            <tr>
-                <th style="text-align: center; font-size: 17px;" >이름</th>
-                <td style="text-align: center;"><%= vo.getSname() %></td>
-            </tr>
-            <tr>
-                <th style="text-align: center; font-size: 17px;">강좌</th>
-                <%
-				String classno	 = vo.getClassno();
-				String className = "";
-				if(classno != null || classno != "") {
-					switch(classno) {
-					    case "1" :
-					    	className = "빅데이터";
-					    	break;
-					    case "2" :
-					    	className = "웹디자인";
-						    break;
-					    case "3" :
-					    	className = "AWS";
-						    break;
+        <form action="modify.jsp" name="student" method="post">
+        <input type="hidden" name="sno" value="<%= sno %>">
+	        <table>
+	            <tr style="border: none;">
+	                <td colspan="6" style="text-align: left; font-size: 20px; font-weight: bold; background-color: white; border-right:none;">- 학생정보</td>
+	            </tr>
+	            <tr>
+	                <th style="text-align: center; font-size: 17px;" >이름</th>
+	                <td style="text-align: center;"><%= vo.getSname() %></td>
+	            </tr>
+	            <tr>
+	                <th style="text-align: center; font-size: 17px;">강좌</th>
+	                <%
+					String classno	 = vo.getClassno();
+					String className = "";
+					if(classno != null || classno != "") {
+						switch(classno) {
+						    case "1" :
+						    	className = "빅데이터";
+						    	break;
+						    case "2" :
+						    	className = "웹디자인";
+							    break;
+						    case "3" :
+						    	className = "AWS";
+							    break;
+						}
 					}
-				}
-				%>
-                <td style="text-align: center;"><%= className %></td>
-            </tr>
-            <tr>
-                <th style="text-align: center; font-size: 17px;">전화번호</th>
-                <td style="text-align: center;"><%= vo.getPhone() %></td>
-            </tr>
-            <tr>
-                <th style="text-align: center; font-size: 17px;">생년월일</th>
-                <td style="text-align: center;"><%= vo.getBirthday() %></td>
-            </tr>
-            <tr  style="border-bottom: none; ">
-                <td colspan="2" style="border-bottom: none; border-right: none; text-align:right;"><button style="width:60px; height:30px; background-color: #1895be; border:none; font-size:15px; border-radius: 5px; cursor:pointer; color:white; font-weight:bold;" onclick="window.location.href='modify.jsp?sno=<%= vo.getSno() %>'">수정</button></td>
-            </tr>
-        </table>
+					%>
+	                <td style="text-align: center;"><%= className %></td>
+	            </tr>
+	            <tr>
+	                <th style="text-align: center; font-size: 17px;">전화번호</th>
+	                <td style="text-align: center;"><%= vo.getPhone() %></td>
+	            </tr>
+	            <tr>
+	                <th style="text-align: center; font-size: 17px;">생년월일</th>
+	                <td style="text-align: center;"><%= vo.getBirthday() %></td>
+	            </tr>
+	            <tr  style="border-bottom: none; ">
+	                <td colspan="2" style="border-bottom: none; border-right: none; text-align:right;">
+		                <button style="width:60px; height:30px; background-color: #1895be; border:none; font-size:15px; border-radius: 5px; cursor:pointer; color:white; font-weight:bold;" onclick="window.location.href='modify.jsp?sno=<%= vo.getSno() %>'">수정</button>
+	                </td>
+	            </tr>
+	        </table>
+	    </form>
         <table style="top: 225px;">
             <tr style="border: none;">
                 <td colspan="6" style="text-align: left; font-size: 20px; font-weight: bold; border: none;">- 출결현황</td>
@@ -141,38 +145,6 @@ studentinfoVO vo = dto.read(sno);
                 <th style="height: 45px;">출결</th>
                 <th style="height: 45px;">입실</th>
                 <th style="height: 45px; border-right: none;">퇴실</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2025.01.20</td>
-                <td>빅데이터</td>
-                <td>출석</td>
-                <td>9:00</td>
-                <td style="border-right: none;">18:00</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2025.01.20</td>
-                <td>빅데이터</td>
-                <td>출석</td>
-                <td>9:00</td>
-                <td style="border-right: none;">18:00</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2025.01.20</td>
-                <td>빅데이터</td>
-                <td>출석</td>
-                <td>9:00</td>
-                <td style="border-right: none;">18:00</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2025.01.20</td>
-                <td>빅데이터</td>
-                <td>출석</td>
-                <td>9:00</td>
-                <td style="border-right: none;">18:00</td>
             </tr>
             <tr>
                 <td>1</td>

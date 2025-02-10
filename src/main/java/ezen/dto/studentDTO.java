@@ -48,9 +48,9 @@ public class studentDTO extends DBManager {
 		
 		String sql = "";
 		sql += "update user ";
-		sql += "set sname = '" + sname + "' ";
-		sql += "set phone = '" + phone + "' ";
-		sql += "set classno = '" + classno + "' ";
+		sql += "set sname = '" + sname + "', ";
+		sql += "phone = '" + phone + "', ";
+		sql += "classno = '" + classno + "' ";
 		sql += "where sno = '" + sno + "' ";
 		this.execute(sql);
 		this.dbDisconnect();

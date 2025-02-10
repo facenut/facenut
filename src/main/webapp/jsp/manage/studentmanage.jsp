@@ -139,7 +139,6 @@ if( list != null ){
 				                      <option selected value="1">승인</option>
 				                      <option value="2">삭제</option>
 				                  </select>
-				<input type="hidden" name="sno" value="<%= sno %>">
 				<button type="submit" onclick="submitOk()" style="width:50px; height:25px; font-weight:bold; background-color: #1895be; border:none; color:white; font-size:12px; border-radius: 5px; cursor:pointer;">확인</button>
 				</td>
 				</form>
