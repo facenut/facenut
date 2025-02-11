@@ -79,6 +79,28 @@ for(attendanceVO vo : refine_list) {
 	    	className = "AWS";
 		    break;
 	}
+	String event_str = "";
+	// events에서 event를 검색 -> '불인정' -> event : 결석
+	for(String event : vo.getEvents()){
+		System.out.println(event);
+		if(event.equals("불인정")){
+			event_str = "결석";
+			break;
+		}else if(event.equals("복귀")){
+			event_str = "외출";
+			break;
+		}else if(event.equals("조퇴")){
+			event_str = "조퇴";
+			break;
+		}else if(event.equals("지각")){
+			event_str = "지각";
+			break;
+		}else{
+			event_str = "출석";
+		}
+		
+	}
+	
 %>
 <tr class="ajax_added">
 	<td><%= index %></td>
@@ -89,12 +111,12 @@ for(attendanceVO vo : refine_list) {
 	<td>
 	    <div class="attendancebox" style="display: flex; justify-content:center;">
 	        <div style="width:30%; display: inline-block; text-align:center;"><%= vo.getEvent() %></div>
-	        <div style="width:30%; display: inline-block; text-align:center;"><%= vo.getCheckin() %></div>
-	        <div class="exit" style="width:30%; display: inline-block; text-align:center;"><%= vo.getCheckout() %></div>  
+	        <div style="width:30%; display: inline-block; text-align:center;"><%= vo.getCheckin().split(" ")[1] %></div>
+	        <div class="exit" style="width:30%; display: inline-block; text-align:center;"><%= vo.getCheckout().split(" ")[1] %></div>  
 	    </div>
 	</td>
 	<td style="border-right: none;" >
-		<span>지각</span>
+		<span><%= event_str %></span>
 	</td>
 </tr>
 <%

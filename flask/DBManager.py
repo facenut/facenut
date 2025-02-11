@@ -98,3 +98,10 @@ class DBManager :
         df = pd.DataFrame(self.data)
         df.columns = columns
         return df
+    
+    def GetList(self) :
+        if self.GetTotal() < 1 :
+            return []
+        df = self.GetDf()
+        result = df.to_dict('records')
+        return result

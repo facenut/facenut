@@ -22,6 +22,7 @@ from flask import Flask, render_template, Response, request
 import DBManager as db
 import json
 from datetime import datetime
+import checkout
 
 # 로그 설정
 log_file = "dev.log"
@@ -92,7 +93,7 @@ def load_database(refresh=False):
 
         logging.info("DB에서 사용자 정보를 로드합니다")
         dbms = db.DBManager()
-        dbflag = dbms.DBOpen(host="localhost", dbname="facenetdb", id="root", pw="ezen")
+        dbflag = dbms.DBOpen(host="192.168.0.231", dbname="facenutdb", id="bteam", pw="ezen")
         if not dbflag:
             logging.error("데이터베이스 연결 오류")
             return {}
@@ -118,7 +119,7 @@ def name_search(phone):
     try:
         logging.info(f"전화번호로 사용자 검색: {phone}")
         dbms = db.DBManager()
-        dbflag = dbms.DBOpen(host="localhost", dbname="facenetdb", id="root", pw="ezen")
+        dbflag = dbms.DBOpen(host="192.168.0.231", dbname="facenutdb", id="bteam", pw="ezen")
         if not dbflag:
             logging.error("데이터베이스 연결 오류")
             return None, None
@@ -231,7 +232,7 @@ def save_database(new_face):
         sno = new_face[0]
 
         dbms = db.DBManager()
-        dbflag = dbms.DBOpen(host="localhost", dbname="facenetdb", id="root", pw="ezen")
+        dbflag = dbms.DBOpen(host="192.168.0.231", dbname="facenutdb", id="bteam", pw="ezen")
         if not dbflag:
             logging.error("데이터베이스 연결 오류")
             return
@@ -318,8 +319,8 @@ def get_camera():
     """
     웹캠 초기화
     """
-    width = config.get("CAMERA_WIDTH", 800)
-    height = config.get("CAMERA_HEIGHT", 600)
+    width = config.get("CAMERA_WIDTH", 1920)
+    height = config.get("CAMERA_HEIGHT", 1080)
     try:
         cap = cv2.VideoCapture(0, cv2.CAP_MSMF)  # Windows에서 MSMF 드라이버 사용 예시
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
@@ -377,13 +378,13 @@ def gen_frames(mtcnn, embedder, device, config, DEV_MODE=False):
                     x1, y1, x2, y2 = map(int, box)
                     w, h = x2 - x1, y2 - y1
                     # 크기가 너무 작으면 무시
-                    if w < 200 or h < 200:
+                    if w < 160 or h < 160:
                         continue
 
                     # 프레임 중심 근처 얼굴만 처리 (원하는 로직에 따라 조절)
                     cx, cy = (x1 + x2)//2, (y1 + y2)//2
                     frame_cx, frame_cy = frame.shape[1]//2, frame.shape[0]//2
-                    if abs(cx - frame_cx) > 120 or abs(cy - frame_cy) > 120:
+                    if abs(cx - frame_cx) > 200 or abs(cy - frame_cy) > 200:
                         continue
 
                     # 얼굴 영역 표시
@@ -584,36 +585,40 @@ def checkout():
         logging.info(f"사진 저장: {filename}")
 
         sno = request.args.get("sno")
-        dbms = db.DBManager()
-        dbflag = dbms.DBOpen(host="localhost", dbname="facenetdb", id="root", pw="ezen")
-        if not dbflag:
-            logging.error("데이터베이스 연결 오류 (checkout)")
-            return "에러 발생", 500
+        now = datetime.datetime.now()
+        event = checkout.auto_attendance(sno, now)
+        checkout.add_attendance_record(sno, event, now)
+        
+    #     dbms = db.DBManager()
+    #     dbflag = dbms.DBOpen(host="192.168.0.231", dbname="facenutdb", id="bteam", pw="ezen")
+    #     if not dbflag:
+    #         logging.error("데이터베이스 연결 오류 (checkout)")
+    #         return "에러 발생", 500
 
-        sql = "INSERT INTO attendance (sno, classno) SELECT sno, classno FROM studentinfo WHERE sno = " + sno
-        dbms.RunSQL(sql)
-        dbms.CloseQuery()
+    #     sql = "INSERT INTO attendance (sno, classno) SELECT sno, classno FROM studentinfo WHERE sno = " + sno
+    #     dbms.RunSQL(sql)
+    #     dbms.CloseQuery()
 
-        sql = "SELECT studentinfo.sname as sname, attendance.checktime as checktime " \
-              "FROM studentinfo, attendance " \
-              "WHERE studentinfo.sno = attendance.sno " \
-              "AND studentinfo.sno = " + sno + " AND date(checktime) = date(now())"
-        dbms.OpenQuery(sql)
-        count = dbms.GetTotal()
-        sname = dbms.GetValue(0, 'sname')
-        checktime = dbms.GetValue(0, 'checktime')
-        if count == 1:
-            reference_time = checktime.replace(hour=9, minute=10, second=0)
-            if checktime > reference_time:
-                message = f"{sname} 님 지각입니다."
-            else:
-                message = f"{sname} 님 정상출석입니다."
-        else:
-            message = f"{sname} 님 퇴실확인되었습니다."
-        dbms.CloseQuery()
-        dbms.DBClose()
-        logging.info(f"체크아웃 결과: {message}")
-        return message
+    #     sql = "SELECT studentinfo.sname as sname, attendance.checktime as checktime " \
+    #           "FROM studentinfo, attendance " \
+    #           "WHERE studentinfo.sno = attendance.sno " \
+    #           "AND studentinfo.sno = " + sno + " AND date(checktime) = date(now())"
+    #     dbms.OpenQuery(sql)
+    #     count = dbms.GetTotal()
+    #     sname = dbms.GetValue(0, 'sname')
+    #     checktime = dbms.GetValue(0, 'checktime')
+    #     if count == 1:
+    #         reference_time = checktime.replace(hour=9, minute=10, second=0)
+    #         if checktime > reference_time:
+    #             message = f"{sname} 님 지각입니다."
+    #         else:
+    #             message = f"{sname} 님 정상출석입니다."
+    #     else:
+    #         message = f"{sname} 님 퇴실확인되었습니다."
+    #     dbms.CloseQuery()
+    #     dbms.DBClose()
+    #     logging.info(f"체크아웃 결과: {message}")
+    #     return message
     except Exception as e:
         logging.error(f"/checkout 엔드포인트 예외: {e}")
         return "에러 발생", 500
