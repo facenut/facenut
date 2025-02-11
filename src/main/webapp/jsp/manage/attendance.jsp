@@ -42,7 +42,7 @@ String sno = request.getParameter("sno");
 		            selected_day = "< "+$("#select_year").val()+"년 "+$("#select_month").val()+"월 "+$("#select_day").val()+"일 출석현황 >"
 		            request_date = $("#select_year").val()+"-"+$("#select_month").val()+"-"+$("#select_day").val()
 		            $("#selected_day").html(selected_day);
-		            
+		            if($(".ajax_added")) $(".ajax_added").remove();
 		            $.ajax({
 		        		url : 'getattend.jsp?day=' + request_date,
 		        		type : 'get',

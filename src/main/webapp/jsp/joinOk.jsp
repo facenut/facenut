@@ -25,7 +25,7 @@ if( dto.join(vo) == true )
 	%>
 	<script>
 		alert('회원으로 가입되셨습니다.'); 
-		location.href='../html/face/facerecog.html';
+		location.href='http://192.168.0.87:5000/';
 	</script>
 	<%
 } else {
@@ -33,7 +33,7 @@ if( dto.join(vo) == true )
 	%>
 	<script>
 		alert('오류가 발생하였습니다. 다시 시도해주세요.'); 
-		location.href='../html/face/facerecog.html';
+		location.href='http://192.168.0.87:5000/';
 	</script>
 	<%
 }
