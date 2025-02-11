@@ -22,7 +22,7 @@ from flask import Flask, render_template, Response, request
 import DBManager as db
 import json
 from datetime import datetime
-import checkout
+import CheckOut
 
 # 로그 설정
 log_file = "dev.log"
@@ -567,7 +567,7 @@ def new_face_detected():
         return "에러 발생", 500
 
 @app.route('/checkout')
-def checkout():
+def checkout_attendance():
     try:
         camera = get_camera()
         if camera is None:
@@ -579,16 +579,31 @@ def checkout():
             logging.error("체크아웃 시 프레임 획득 실패")
             return "에러 발생", 500
 
-        now = datetime.now()
-        filename = './picture/' + now.strftime('%Y%m%d_%H%M%S') + '.jpg'
+        pic_now = datetime.now()
+        filename = './picture/' + pic_now.strftime('%Y%m%d_%H%M%S') + '.jpg'
         cv2.imwrite(filename, frame)
         logging.info(f"사진 저장: {filename}")
 
         sno = request.args.get("sno")
-        now = datetime.datetime.now()
-        event = checkout.auto_attendance(sno, now)
-        checkout.add_attendance_record(sno, event, now)
+        db_now = datetime.now()
+        print("now 2 : ",db_now)
+        event = CheckOut.auto_attendance(sno, db_now)
+        print("출석을 판단중입니다.")
+        CheckOut.add_attendance_record(sno, event, db_now)
+        print("출석을 저장합니다.")
         
+        dbms = db.DBManager()
+        dbflag = dbms.DBOpen(host="192.168.0.231", dbname="facenutdb", id="bteam", pw="ezen")
+        if not dbflag:
+            logging.error("데이터베이스 연결 오류 (checkout)")
+            return "에러 발생", 500
+        sql = f"SELECT sname FROM studentinfo WHERE studentinfo.sno = {sno}"
+        dbms.OpenQuery(sql)
+        sname = dbms.GetValue(0, 'sname')
+        dbms.CloseQuery()
+
+        message = f"{sname}님 {event}하셨습니다."
+        return message
     #     dbms = db.DBManager()
     #     dbflag = dbms.DBOpen(host="192.168.0.231", dbname="facenutdb", id="bteam", pw="ezen")
     #     if not dbflag:
