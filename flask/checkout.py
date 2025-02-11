@@ -12,12 +12,7 @@ def setup_test_db():
     이 함수는 깨끗한 테스트 환경을 제공하기 위한 용도로만 사용하세요.
     """
     dbms = db.DBManager()
-    dbflag = dbms.DBOpen(
-        host="localhost",
-        dbname="facenetdb",
-        id="root",
-        pw="ezen"
-    )
+    dbflag = dbms.DBOpen(host="192.168.0.231", dbname="facenutdb", id="bteam", pw="ezen")
     if not dbflag:
         print("데이터베이스 연결 오류입니다")
         return
@@ -41,18 +36,14 @@ def setup_test_db():
 # =============================================================================
 # 1. DB 연동 함수: 출결 기록 추가, 조회, 업데이트
 # =============================================================================
-def add_attendance_record(sno, classno, event, checktime=None):
+def add_attendance_record(sno, event, checktime=None):
     """
     출결 기록을 DB에 추가하는 함수.
     테이블 'attendance'에는 (sno, classno, event, checktime)를 저장합니다.
     """
     dbms = db.DBManager()
-    dbflag = dbms.DBOpen(
-        host="localhost",
-        dbname="facenetdb",
-        id="root",
-        pw="ezen"
-    )
+    dbflag = dbms.DBOpen(host="192.168.0.231", dbname="facenutdb", id="bteam", pw="ezen")
+    
     if not dbflag:
         print("데이터베이스 연결 오류입니다")
         return
@@ -71,12 +62,7 @@ def get_today_attendance_records(sno, date):
     날짜는 date 객체를 사용하며, DB에서는 'YYYY-MM-DD' 형식으로 비교합니다.
     """
     dbms = db.DBManager()
-    dbflag = dbms.DBOpen(
-        host="localhost",
-        dbname="facenetdb",
-        id="root",
-        pw="ezen"
-    )
+    dbflag = dbms.DBOpen(host="192.168.0.231", dbname="facenutdb", id="bteam", pw="ezen")
     if dbflag == False :
         print("데이터베이스 연결 오류입니다")
         return {}
@@ -100,12 +86,7 @@ def update_attendance_record(record_id, new_event):
     특정 출결 레코드(record_id)의 event 컬럼을 new_event로 업데이트합니다.
     """
     dbms = db.DBManager()
-    dbflag = dbms.DBOpen(
-        host="localhost",
-        dbname="facenetdb",
-        id="root",
-        pw="ezen"
-    )
+    dbflag = dbms.DBOpen(host="192.168.0.231", dbname="facenutdb", id="bteam", pw="ezen")
     if not dbflag:
         print("데이터베이스 연결 오류입니다")
         return
@@ -121,12 +102,7 @@ def get_all_attendance_records(date):
     지정 날짜(date)의 전체 출결 기록을 조회합니다.
     """
     dbms = db.DBManager()
-    dbflag = dbms.DBOpen(
-        host="localhost",
-        dbname="facenetdb",
-        id="root",
-        pw="ezen"
-    )
+    dbflag = dbms.DBOpen(host="192.168.0.231", dbname="facenutdb", id="bteam", pw="ezen")
     if dbflag == False :
         print("데이터베이스 연결 오류입니다")
         return {}

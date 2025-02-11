@@ -28,7 +28,7 @@ import CheckOut
 log_file = "dev.log"
 logging.basicConfig(
     filename=log_file,
-    level=logging.INFO,
+    level=logging.ERROR,
     format="%(asctime)s [%(levelname)s] %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S"
 )
@@ -569,25 +569,32 @@ def new_face_detected():
 @app.route('/checkout')
 def checkout_attendance():
     try:
+        print("Stage 1")
         camera = get_camera()
         if camera is None:
             logging.error("카메라 활성화 실패")
             return "에러 발생", 500
 
+        print("Stage 2")
         ret, frame = camera.read()
         if not ret:
             logging.error("체크아웃 시 프레임 획득 실패")
             return "에러 발생", 500
 
+        print("Stage 3")
         pic_now = datetime.now()
         filename = './picture/' + pic_now.strftime('%Y%m%d_%H%M%S') + '.jpg'
         cv2.imwrite(filename, frame)
         logging.info(f"사진 저장: {filename}")
 
+        print("Stage 4")
         sno = request.args.get("sno")
+        print("Stage 5")
         db_now = datetime.now()
         print("now 2 : ",db_now)
+        print("Stage 6")
         event = CheckOut.auto_attendance(sno, db_now)
+        print("Stage 7")
         print("출석을 판단중입니다.")
         CheckOut.add_attendance_record(sno, event, db_now)
         print("출석을 저장합니다.")
@@ -636,6 +643,7 @@ def checkout_attendance():
     #     return message
     except Exception as e:
         logging.error(f"/checkout 엔드포인트 예외: {e}")
+        print(e)
         return "에러 발생", 500
 
 # 아래는 개발자 페이지 예시 =============================================
